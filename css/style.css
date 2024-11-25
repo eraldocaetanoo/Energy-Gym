@@ -153,7 +153,7 @@ button:active {
 
 
 input {
-    width: 100%; /* Largura total */
+    width: 30%; /* Largura total */
     padding: 10px; /* Espaçamento interno */
     margin: 10px 0; /* Espaço externo */
     border: 2px solid #ccc; /* Borda */
@@ -164,7 +164,7 @@ input {
 }
 
 input:focus {
-    border-color: #4CAF50; /* Cor da borda ao focar */
+    border-color: #564caf; /* Cor da borda ao focar */
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Sombra ao focar */
     outline: none; /* Remove o contorno padrão */
 }

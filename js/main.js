@@ -26,17 +26,3 @@ function closeOnClickOutside(event) {
     }
 }
 
-function salvarValor() {
-    const nome = document.getElementById('nomeUsuario').value;
-    if (nome) {
-        localStorage.setItem('usuario', nome);
-        //alert('Valor salvo!');
-    } else {
-        alert('Por favor, digite um nome!');
-    }
-}
-
-function recuperarValor() {
-    const usuario = localStorage.getItem('usuario');
-    alert('Usuário: ' + usuario);
-}
