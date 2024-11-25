@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('E:/Informática para Internet/Desenvolvimento Web I/projeto_energy_gym/imagem/pexels-anete-lusina-16513604.jpg'); /* Define a imagem */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    background-size: 100%; /* Faz com que a imagem cubra todo o fundo */
+    background-position: center; /* Centraliza a imagem no fundo */
+    background-position-y: -550px;
+
+
+
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:rgb(50, 37, 169);
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #fff;
+}
+.logo {
+    display: flex;
+    flex-direction: column; /* Empilha os elementos verticalmente */
+    align-items: center; /* Alinha ao centro horizontalmente */
+    text-align: center; /* Centraliza o texto */
+}
+
+.logo h1 {
+    font-size: 20px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.logo img {
+    width: 100px;
+}
+
+.sobre a{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    color:#fff;
+}
+
+.sobre a:hover{
+    color: #ddd;
+}
+
+.menu-icon {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.menu-icon:hover{
+    color: #ddd;
+}
+
+.navbar ul {
+    list-style: none;
+    display:flex;
+}
+
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar ul li a:hover {
+    color: #ddd;
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Oculta a barra lateral fora da tela */
+    width: 250px;
+    height: 100%;
+    background-color:rgb(32, 7, 132, 0.8);
+    color: #fff;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+
+}
+
+.sidebar.open {
+    left: 0; /* Move a barra lateral para dentro da tela */
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    text-align: center;
+}
+
+.sidebar ul li a {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar ul li a:hover {
+    color: #ddd;
+}
+
+.foto_perfil{
+    width: 90px; /* Define a largura da imagem */
+
+
+}
+
+main {
+    padding: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #fff;
+}
