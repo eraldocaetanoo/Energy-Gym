@@ -26,3 +26,24 @@ function closeOnClickOutside(event) {
     }
 }
 
+function salvarValor() {
+    const nome = document.getElementById('nomeUsuario').value;
+    const email = document.getElementById('emailUsuario').value;
+    if (nome || email) {
+        localStorage.setItem('usuario', nome);
+        localStorage.setItem('email', email);
+        alert('Valor salvo!');
+    } else {
+        alert('Por favor, digite valor válido!');
+    }
+}
+
+function recuperarValor() {
+    const usuarionome = localStorage.getItem('usuario');
+    const usuarioemail = localStorage.getItem('email');
+    if (usuarioemail || usuarionome) {
+        alert('Usuário: ' + usuarionome + '\nEmail: ' + usuarioemail);
+    } else {
+        alert('Nenhum valor encontrado!');
+    }
+}
