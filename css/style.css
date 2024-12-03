@@ -69,7 +69,7 @@ body {
 
 .sobre a{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
     text-decoration: none;
     color:#fff;
@@ -142,23 +142,25 @@ main {
 
 main h1{
     color: rgb(255, 255, 255);
-    text-shadow: 3px 3px 5px rgb(32, 30, 30);
+    text-shadow: 3px 3px 5px rgb(0, 0, 0);
     text-align: center;
 }
 
 button {
-    background-color: rgb(98, 87, 201); /* Cor de fundo */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(31, 65, 177); /* Cor de fundo */
     color: white; /* Cor do texto */
     padding: 10px 20px; /* Espaçamento interno */
     border: none; /* Remove a borda padrão */
     border-radius: 5px; /* Bordas arredondadas */
-    font-size: 16px; /* Tamanho da fonte */
+    font-size: 20px; /* Tamanho da fonte */
     cursor: pointer; /* Mostra a "mãozinha" ao passar o mouse */
     transition: background-color 0.3s; /* Animação suave ao passar o mouse */
+    margin-right: 20px;
 }
 
 button:hover {
-    background-color: #7745a0; /* Cor de fundo ao passar o mouse */
+    background-color: #090342; /* Cor de fundo ao passar o mouse */
 }
 
   /* Estilo ao clicar */
@@ -168,19 +170,19 @@ button:active {
 
 .gerarSenha {
     background-color: rgb(31, 65, 177); /* Cor de fundo */
-    color: white; /* Cor do texto */
-    padding: 10px 20px; /* Espaçamento interno */
-    border: none; /* Remove a borda padrão */
-    border-radius: 5px; /* Bordas arredondadas */
     font-size: 16px; /* Tamanho da fonte */
-    cursor: pointer; /* Mostra a "mãozinha" ao passar o mouse */
-    transition: background-color 0.3s; /* Animação suave ao passar o mouse */
 }
 
 .gerarSenha:hover{
     background-color:#090342; /* Cor de fundo ao passar o mouse */
 }
+.salvarbutton {
+    background-color: rgb(15, 190, 30);
+}
 
+.salvarbutton:hover {
+    background-color: green;
+}
 
 
 label {
@@ -190,7 +192,7 @@ label {
     text-shadow: 3px 3px 5px rgb(32, 30, 30);
 }
 
-input {
+.inputFormCadastro {
     width: 85%; /* Largura total */
     padding: 10px; /* Espaçamento interno */
     margin: 10px 0; /* Espaço externo */
@@ -201,19 +203,19 @@ input {
     transition: border-color 0.3s, box-shadow 0.3s; /* Transições suaves */
 }
 
-input:focus {
+.inputFormCadastro:focus {
     border-color: #564caf; /* Cor da borda ao focar */
     box-shadow: 0 0 5px rgba(5, 137, 214, 0.5); /* Sombra ao focar */
     outline: none; /* Remove o contorno padrão */
 }
 
-input::placeholder {
+.inputFormCadastro:placeholder {
     color: #aaa; /* Cor do texto placeholder */
     font-style: italic; /* Estilo do texto placeholder */
 }
 
 
-main form {
+#formulario{
     background-color: rgba(69, 68, 77, 0.5);
     transform: translateX(50%); 
     width: 50%;
@@ -227,3 +229,33 @@ main form {
     margin-top: 80px;
 }
 
+#btnTopo {
+
+
+    position: fixed; /* Fixa o botão na tela */
+    bottom: 20px; /* Distância da parte inferior */
+    right: 20px; /* Distância da parte direita */
+    background-color: #007BFF; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    border: none; /* Sem borda */
+    border-radius: 50%; /* Forma redonda */
+    width: 50px; /* Largura */
+    height: 50px; /* Altura */
+    padding: 10px 15px;
+    font-size: 24px; /* Tamanho da seta */
+    cursor: pointer; /* Cursor de mão ao passar */
+    display: none; /* Inicialmente escondido */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+    transition: opacity 0.3s ease; /* Efeito suave */
+}
+
+/* Efeito hover no botão */
+#btnTopo:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    color: white;
+}

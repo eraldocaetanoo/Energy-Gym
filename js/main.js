@@ -97,3 +97,20 @@ function getPassword() {
     document.getElementById('senhaUsuario').value = password;
 }
 
+// Mostrar o botão ao rolar a página
+window.onscroll = function() {
+    const btnTopo = document.getElementById('btnTopo');
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        btnTopo.style.display = "block";
+    } else {
+        btnTopo.style.display = "none";
+    }
+};
+
+// Função para voltar ao topo
+function voltarAoTopo() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Rola suavemente
+    });
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energy Gym - Cadastro</title>
+    <title>Energy Gym</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../imagem/logo - Copia.png" type="image/png">
 
@@ -47,34 +47,16 @@
     <!-- Conteúdo principal da página -->
     <main>
         <div class="cadastro">
-            <h1>Cadastro</h1>
+            <h1>Área do Adminstrador</h1>
             <br>
 
             <form id="formulario" action="#" onsubmit="return false;">
-
-                <label class="nomecompleto" for="nomeUsuario">Nome completo:</label> 
-                <input class="inputFormCadastro" type="text" id="nomeUsuario" placeholder="Digite o nome"> 
-                <label class="email" for="emailUsuario">E-mail:</label> 
-                <input class="inputFormCadastro" type="text" id="emailUsuario" placeholder="Digite o email">
-                <label class="nasc" for="nascUsuario">Data de nascimento:</label> 
-                <input class="inputFormCadastro" type="date" id="nascUsuario">
-                <label class="senha" for="senhaUsuario">Gerar senha do usuário:</label> 
-                <input class="inputFormCadastro" type="text" id="senhaUsuario" placeholder="Gerar senha" readonly="">
-                <p></p>
-                <button class="gerarSenha" onclick="getPassword()">Gerar senha do usuário</button>
                 
-                <p></p><br>
-                <button class="salvarbutton" onclick="salvarValor()">Salvar</button>
-    
-                <button class="recupbutton" onclick="recuperarValor()">Vizualizar dados salvos</button>
                 
             </form>
-            <button id="btnTopo" onclick="voltarAoTopo()">↑</button>
         </div>
-        
+        <button id="btnTopo" onclick="voltarAoTopo()">↑</button>
     </main>
-    <footer>
-        <p>&copy; 2024 Energy Gym. Todos os direitos reservados.</p>
-    </footer>
+
 </body>
 </html>
