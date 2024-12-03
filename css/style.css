@@ -6,7 +6,7 @@
 
 body {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-image: url('E:/Informática para Internet/Desenvolvimento Web I/projeto_energy_gym/Energy-Gym/imagem/pexels-anete-lusina-16513604.jpg'); /* Define a imagem */
+    background-image: url('../imagem/pexels-anete-lusina-16513604.jpg'); /* Define a imagem */
     background-repeat: no-repeat; /* Evita a repetição da imagem */
     background-size: 100%; /* Faz com que a imagem cubra todo o fundo */
     background-position: center; /* Centraliza a imagem no fundo */
@@ -165,6 +165,18 @@ button:hover {
 button:active {
     background-color: #100553;
 }
+
+.gerarSenha {
+    background-color: rgb(31, 65, 177); /* Cor de fundo */
+    color: white; /* Cor do texto */
+    padding: 10px 20px; /* Espaçamento interno */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Mostra a "mãozinha" ao passar o mouse */
+    transition: background-color 0.3s; /* Animação suave ao passar o mouse */
+}
+
 .gerarSenha:hover{
     background-color:#090342; /* Cor de fundo ao passar o mouse */
 }

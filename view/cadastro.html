@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <script src="E:\Informática para Internet\Desenvolvimento Web I\projeto_energy_gym\Energy-Gym\js\main.js"></script>
+    <script src="../js/main.js"></script>
     <!-- Cabeçalho com o ícone de menu -->
     <header class="header">
         <div class="menu-icon" onclick="toggleMenu()"> <!-- Ícone de três barras -->
@@ -17,7 +17,7 @@
         </div>
        <br>
         <div class="logo">
-            <a href="#inicio"><img src="E:\Informática para Internet\Desenvolvimento Web I\projeto_energy_gym\Energy-Gym\imagem\logo.png" alt="logo">
+            <a href="#inicio"><img src="../imagem/logo.png" alt="logo">
             <h1>ENERGY GYM</h1>
             </a>
         </div>
@@ -32,15 +32,15 @@
     <nav class="sidebar" id="sidebar">
         
         <ul>
-            <li><img class="foto_perfil" src="E:\Informática para Internet\Desenvolvimento Web I\projeto_energy_gym\Energy-Gym\imagem\pngegg.png" alt="foto_perfil">
+            <li><img class="foto_perfil" src="../imagem/pngegg.png" alt="foto_perfil">
                 <p></p>
                     <br>
-                    <a href="#perfil">Meu Perfil</a></li>
-            <li><a href="#aulas">Aulas</a></li>
-            <li><a href="#avaliacoes">Avaliações Físicas</a></li>
-            <li><a href="#freq">Frequência</a></li>
-            <li><a href="#pagamento">Pagamento</a></li>
-            <li><a href="#sair">Sair</a></li>
+                    <a href="#perfil">Meu Perfil</a>
+                    <li><a href="#aulas">Aulas</a></li>
+                    <li><a href="#avaliacoes">Avaliações Físicas</a></li>
+                    <li><a href="#freq">Frequência</a></li>
+                    <li><a href="#pagamento">Pagamento</a></li>
+                    <li><a href="#sair">Sair</a></li>
         </ul>
     </nav>
 
@@ -60,6 +60,7 @@
                 <input type="date" id="nascUsuario">
                 <label class="senha" for="senhaUsuario">Gerar senha do usuário:</label> 
                 <input type="text" id="senhaUsuario" placeholder="Gerar senha" readonly="">
+                <p></p>
                 <button class="gerarSenha" onclick="getPassword()">Gerar senha do usuário</button>
                 
                 <p></p><br>
