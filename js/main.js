@@ -29,21 +29,71 @@ function closeOnClickOutside(event) {
 function salvarValor() {
     const nome = document.getElementById('nomeUsuario').value;
     const email = document.getElementById('emailUsuario').value;
-    if (nome || email) {
-        localStorage.setItem('usuario', nome);
+    const nascimento = document.getElementById('nascUsuario').value;
+    const senha = document.getElementById('senhaUsuario').value;
+    if ((nome || email || nascimento) && senha!='') {
+        localStorage.setItem('nome', nome);
         localStorage.setItem('email', email);
-        alert('Valor salvo!');
+        localStorage.setItem('nasci', nascimento);
+        localStorage.setItem('senhaUsuario', senha);
+
+        alert('Dados salvos!');
     } else {
-        alert('Por favor, digite valor válido!');
+        alert('Por favor, preencha todos os campos!');
     }
 }
 
 function recuperarValor() {
-    const usuarionome = localStorage.getItem('usuario');
+    const usuarionome = localStorage.getItem('nome');
     const usuarioemail = localStorage.getItem('email');
-    if (usuarioemail || usuarionome) {
-        alert('Usuário: ' + usuarionome + '\nEmail: ' + usuarioemail);
+    const usuarionasci = localStorage.getItem('nasci');
+    const senhaUsuario = localStorage.getItem('senhaUsuario')
+
+    if (usuarioemail || usuarionome || usuarionasci || senhaUsuario) {
+        // Formatar a data de nascimento no formato dd/mm/aaaa
+        let dataFormatada = '';
+        if (usuarionasci) {
+            const partesData = usuarionasci.split('-'); // Divide a data pelo "-"
+            dataFormatada = `${partesData[2]}/${partesData[1]}/${partesData[0]}`; // Reorganiza para dd/mm/aaaa
+        }
+
+        alert(
+            'Usuário: ' + usuarionome +
+            '\nEmail: ' + usuarioemail +
+            '\nData de nascimento: ' + (dataFormatada || 'Não informada') +
+            '\nSenha: ' + senhaUsuario
+        );
     } else {
         alert('Nenhum valor encontrado!');
     }
 }
+
+function getPassword() {
+    // Grupos de caracteres
+    var numbers = "0123456789";
+    var lowercase = "abcdefghijklmnopqrstuvwxyz";
+    var uppercase = "ABCDEFGHIJLMNOPQRSTUVWXYZ";
+    var specialChars = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+    var allChars = numbers + lowercase + uppercase + specialChars;
+
+    var passwordLength = 8; // Tamanho desejado para a senha
+    var password = "";
+
+    // Garantir pelo menos um caractere de cada grupo
+    password += numbers[Math.floor(Math.random() * numbers.length)];
+    password += lowercase[Math.floor(Math.random() * lowercase.length)];
+    password += uppercase[Math.floor(Math.random() * uppercase.length)];
+    password += specialChars[Math.floor(Math.random() * specialChars.length)];
+
+    // Preencher o restante da senha com caracteres aleatórios
+    for (var i = password.length; i < passwordLength; i++) {
+        password += allChars[Math.floor(Math.random() * allChars.length)];
+    }
+
+    // Embaralhar a senha para evitar previsibilidade
+    password = password.split('').sort(() => Math.random() - 0.5).join('');
+
+    // Atribuir ao campo de texto
+    document.getElementById('senhaUsuario').value = password;
+}
+

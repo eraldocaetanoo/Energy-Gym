@@ -5,42 +5,67 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-image: url('E:/Informática para Internet/Desenvolvimento Web I/projeto_energy_gym/Energy-Gym/imagem/pexels-anete-lusina-16513604.jpg'); /* Define a imagem */
     background-repeat: no-repeat; /* Evita a repetição da imagem */
     background-size: 100%; /* Faz com que a imagem cubra todo o fundo */
     background-position: center; /* Centraliza a imagem no fundo */
     background-position-y: -550px;
-
-
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
 
 }
 
 .header {
+    
+
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color:rgb(50, 37, 169);
-    padding: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
+    justify-content: space-between; /* Espaço entre as divs laterais */
+    align-items: center; /* Alinha os itens verticalmente */
+    position: fixed; /* Torna o header o contêiner para posicionamento absoluto */
+    background-color: rgb(50, 37, 169);
+    padding: 25px 30px;
     color: #fff;
+    width: 100%;
+    z-index: 1000; /* Garante que o header fique acima de outros elementos */
 }
+
+
+
 .logo {
-    display: flex;
-    flex-direction: column; /* Empilha os elementos verticalmente */
-    align-items: center; /* Alinha ao centro horizontalmente */
-    text-align: center; /* Centraliza o texto */
+    position: absolute; /* Remove do fluxo normal */
+    left: 50%; /* Move o centro da div para o meio do header */
+    transform: translateX(-50%); /* Ajusta para que o centro da div seja o ponto de alinhamento */
+    text-align: center; /* Centraliza o conteúdo dentro da div */
+}
+
+.logo a {
+    text-decoration:none;
 }
 
 .logo h1 {
     font-size: 20px;
+    margin: 0 auto;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
 }
 
 .logo img {
     width: 100px;
+    height: auto;
+    display: block; /* Garante o comportamento previsível */
+    margin: 0 auto;
+    
 }
+
+.logo a h1 {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color:#fff;
+}
+
 
 .sobre a{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -63,24 +88,6 @@ body {
     color: #ddd;
 }
 
-.navbar ul {
-    list-style: none;
-    display:flex;
-}
-
-.navbar ul li {
-    margin-left: 20px;
-}
-
-.navbar ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.navbar ul li a:hover {
-    color: #ddd;
-}
 .sidebar {
     position: fixed;
     top: 0;
@@ -92,6 +99,7 @@ body {
     overflow-x: hidden;
     transition: 0.3s;
     padding-top: 60px;
+    z-index: 1000;
 
 }
 
@@ -129,10 +137,17 @@ main {
     padding: 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #fff;
+    
+}
+
+main h1{
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 3px 5px rgb(32, 30, 30);
+    text-align: center;
 }
 
 button {
-    background-color: #382bac; /* Cor de fundo */
+    background-color: rgb(98, 87, 201); /* Cor de fundo */
     color: white; /* Cor do texto */
     padding: 10px 20px; /* Espaçamento interno */
     border: none; /* Remove a borda padrão */
@@ -148,16 +163,27 @@ button:hover {
 
   /* Estilo ao clicar */
 button:active {
-    background-color: #8e693e;
+    background-color: #100553;
+}
+.gerarSenha:hover{
+    background-color:#090342; /* Cor de fundo ao passar o mouse */
 }
 
 
+
+label {
+    margin-top: 25px;
+    display: flex;
+    margin-left: 10%; /* Espaçamento entre label e input */
+    text-shadow: 3px 3px 5px rgb(32, 30, 30);
+}
+
 input {
-    width: 30%; /* Largura total */
+    width: 85%; /* Largura total */
     padding: 10px; /* Espaçamento interno */
     margin: 10px 0; /* Espaço externo */
     border: 2px solid #ccc; /* Borda */
-    border-radius: 5px; /* Bordas arredondadas */
+    border-radius: 50px; /* Bordas arredondadas */
     font-size: 16px; /* Tamanho da fonte */
     box-sizing: border-box; /* Inclui padding na largura total */
     transition: border-color 0.3s, box-shadow 0.3s; /* Transições suaves */
@@ -165,7 +191,7 @@ input {
 
 input:focus {
     border-color: #564caf; /* Cor da borda ao focar */
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Sombra ao focar */
+    box-shadow: 0 0 5px rgba(5, 137, 214, 0.5); /* Sombra ao focar */
     outline: none; /* Remove o contorno padrão */
 }
 
@@ -173,3 +199,19 @@ input::placeholder {
     color: #aaa; /* Cor do texto placeholder */
     font-style: italic; /* Estilo do texto placeholder */
 }
+
+
+main form {
+    background-color: rgba(69, 68, 77, 0.5);
+    transform: translateX(50%); 
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px; /* Opcional: adiciona bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opcional: sombra */
+}
+
+.cadastro{
+    margin-top: 80px;
+}
+

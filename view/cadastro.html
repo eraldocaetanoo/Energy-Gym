@@ -15,11 +15,15 @@
         <div class="menu-icon" onclick="toggleMenu()"> <!-- Ícone de três barras -->
             &#9776; <!-- HTML code for three bars (hamburger icon) -->
         </div>
-       
+       <br>
         <div class="logo">
-            <img src="E:\Informática para Internet\Desenvolvimento Web I\projeto_energy_gym\Energy-Gym\imagem\logo.png" alt="logo">
+            <a href="#inicio"><img src="E:\Informática para Internet\Desenvolvimento Web I\projeto_energy_gym\Energy-Gym\imagem\logo.png" alt="logo">
             <h1>ENERGY GYM</h1>
+            </a>
+            
+          
         </div>
+        <br>
         <div class="sobre">
             <a href="#sobre">SOBRE NÓS</a>
         </div>
@@ -38,35 +42,34 @@
             <li><a href="#avaliacoes">Avaliações Físicas</a></li>
             <li><a href="#freq">Frequência</a></li>
             <li><a href="#pagamento">Pagamento</a></li>
-            <li><a href="#configs">Configurações</a></li>
             <li><a href="#sair">Sair</a></li>
         </ul>
     </nav>
 
     <!-- Conteúdo principal da página -->
     <main>
-        <p>Olá </p>
-        <br>
+        <div class="cadastro">
+            <h1>Cadastro</h1>
+            <br>
 
-        <form action="#" onsubmit="return false;">
+            <form id="formulario" action="#" onsubmit="return false;">
 
-            <label for="nomeUsuario">Nome:</label>
-            <input type="text" id="nomeUsuario" placeholder="Digite o nome"> <br>
-            <label for="emailUsuario">Email:</label>
-            <input type="text" id="emailUsuario" placeholder="Digite o email">
-            <p></p>
-            <button onclick="salvarValor()">Salvar Valor</button>
-            <button onclick="recuperarValor()">Recuperar Valor</button>
-
-
-
-
-
-        </form>
-
-        
-
-
+                <label class="nomecompleto" for="nomeUsuario">Nome completo:</label> 
+                <input type="text" id="nomeUsuario" placeholder="Digite o nome"> 
+                <label class="email" for="emailUsuario">E-mail:</label> 
+                <input type="text" id="emailUsuario" placeholder="Digite o email">
+                <label class="nasc" for="nascUsuario">Data de nascimento:</label> 
+                <input type="date" id="nascUsuario">
+                <label class="senha" for="senhaUsuario">Gerar senha do usuário:</label> 
+                <input type="text" id="senhaUsuario" placeholder="Gerar senha" readonly="">
+                <button class="gerarSenha" onclick="getPassword()">Gerar senha do usuário</button>
+                
+                <p></p><br>
+                <button onclick="salvarValor()">Salvar</button>
+                <button onclick="recuperarValor()">Vizualizar dados salvos</button>
+                
+            </form>
+        </div>
     </main>
 
 </body>
