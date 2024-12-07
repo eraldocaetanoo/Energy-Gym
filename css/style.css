@@ -4,16 +4,23 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%; /* Garante que a altura do documento seja considerada */
+}
+
 body {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-image: url('../imagem/pexels-anete-lusina-16513604.jpg'); /* Define a imagem */
     background-repeat: no-repeat; /* Evita a repetição da imagem */
     background-size: 100%; /* Faz com que a imagem cubra todo o fundo */
+    background-attachment: fixed;
     background-position: center; /* Centraliza a imagem no fundo */
     background-position-y: -550px;
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; /* Centraliza verticalmente */
-
+    margin: 0;
+    min-height: 100%;
+    position: relative;
 }
 
 .header {
@@ -27,6 +34,7 @@ body {
     padding: 25px 30px;
     color: #fff;
     width: 100%;
+    height:83px;
     z-index: 1000; /* Garante que o header fique acima de outros elementos */
 }
 
@@ -134,7 +142,7 @@ body {
 }
 
 main {
-    padding: 20px;
+    padding: 40px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #fff;
     
@@ -156,7 +164,7 @@ button {
     font-size: 20px; /* Tamanho da fonte */
     cursor: pointer; /* Mostra a "mãozinha" ao passar o mouse */
     transition: background-color 0.3s; /* Animação suave ao passar o mouse */
-    margin-right: 20px;
+   
 }
 
 button:hover {
@@ -171,6 +179,7 @@ button:active {
 .gerarSenha {
     background-color: rgb(31, 65, 177); /* Cor de fundo */
     font-size: 16px; /* Tamanho da fonte */
+   
 }
 
 .gerarSenha:hover{
@@ -192,7 +201,8 @@ label {
     text-shadow: 3px 3px 5px rgb(32, 30, 30);
 }
 
-.inputFormCadastro {
+.inputForm {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 85%; /* Largura total */
     padding: 10px; /* Espaçamento interno */
     margin: 10px 0; /* Espaço externo */
@@ -203,29 +213,61 @@ label {
     transition: border-color 0.3s, box-shadow 0.3s; /* Transições suaves */
 }
 
-.inputFormCadastro:focus {
+.inputForm:focus {
     border-color: #564caf; /* Cor da borda ao focar */
     box-shadow: 0 0 5px rgba(5, 137, 214, 0.5); /* Sombra ao focar */
     outline: none; /* Remove o contorno padrão */
 }
 
-.inputFormCadastro:placeholder {
+.inputForm::placeholder {
     color: #aaa; /* Cor do texto placeholder */
     font-style: italic; /* Estilo do texto placeholder */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+.inputsenha {
+    position: relative;
+    width: 100%; /* Ajusta a largura da div */
+    display: flex;
+    justify-content: center;
+}
 
-#formulario{
+.toggle-password {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    border: none;
+    background: none;
+}
+
+#formCad{
     background-color: rgba(69, 68, 77, 0.5);
     transform: translateX(50%); 
     width: 50%;
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     border-radius: 8px; /* Opcional: adiciona bordas arredondadas */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opcional: sombra */
 }
 
-.cadastro{
+#formLogin{
+    background-color: rgba(69, 68, 77, 0.5);
+    transform: translateX(50%); 
+    width: 50%;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px; /* Opcional: adiciona bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opcional: sombra */
+}
+
+#login {
+    margin-top: 80px;
+}
+
+.cadastro {
     margin-top: 80px;
 }
 
@@ -258,4 +300,12 @@ label {
 
 footer {
     color: white;
+    font-size: 11px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1px 0;
 }
+

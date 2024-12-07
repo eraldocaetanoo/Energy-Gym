@@ -1,3 +1,5 @@
+
+// Função que chama o menu lateral (sidebar)
 function toggleMenu() {
     const sidebar = document.getElementById('sidebar');
     const isOpen = sidebar.classList.contains('open');
@@ -16,6 +18,7 @@ function toggleMenu() {
     }
 }
 
+// Função do menu lateral (sidebar) (para ao clicar fora ele recolher)
 function closeOnClickOutside(event) {
     const sidebar = document.getElementById('sidebar');
 
@@ -26,6 +29,7 @@ function closeOnClickOutside(event) {
     }
 }
 
+// Função para salvar dados (essa função é chamada quando o boão é clicado)
 function salvarValor() {
     const nome = document.getElementById('nomeUsuario').value;
     const email = document.getElementById('emailUsuario').value;
@@ -43,6 +47,7 @@ function salvarValor() {
     }
 }
 
+// Função para recuperar dados (essa função é chamada quando o boão é clicado)
 function recuperarValor() {
     const usuarionome = localStorage.getItem('nome');
     const usuarioemail = localStorage.getItem('email');
@@ -68,6 +73,7 @@ function recuperarValor() {
     }
 }
 
+// Função para gerar senha
 function getPassword() {
     // Grupos de caracteres
     var numbers = "0123456789";
@@ -113,4 +119,20 @@ function voltarAoTopo() {
         top: 0,
         behavior: 'smooth' // Rola suavemente
     });
+}
+
+
+function togglePassword() {
+    const senhaInput = document.getElementById('senha');
+    const toggleIcon = document.getElementById('toggleIcon');
+
+    if (senhaInput.type === 'password') {
+        senhaInput.type = 'text'; // Mostra a senha
+        toggleIcon.src = 'hiddeneye.png'; // Altera para imagem de ocultar
+        toggleIcon.alt = 'Ocultar senha';
+    } else {
+        senhaInput.type = 'password'; // Oculta a senha
+        toggleIcon.src = 'eye.png'; // Altera para imagem de mostrar
+        toggleIcon.alt = 'Mostrar senha';
+    }
 }
