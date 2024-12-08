@@ -265,17 +265,6 @@ label {
 
 
 
-.toggle-password {
-    position: absolute;
-    right: 10%;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 18px;
-    border: none;
-    background: none;
-}
-
 #formCad{
     background-color: rgba(69, 68, 77, 0.5);
     transform: translateX(50%); 
