@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energy Gym - Administrador</title>
+    <title>Energy Gym - Início</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../imagem/logo - Copia.png" type="image/png">
 
@@ -36,27 +36,41 @@
                 <p></p>
                     <br>
                     <a href="#perfil">Meu Perfil</a>
-                    <li><a href="../view/cadastro.html">Cadastro de alunos</a></li>
+                    <li><a href="#aulas">Aulas</a></li>
                     <li><a href="#avaliacoes">Avaliações Físicas</a></li>
                     <li><a href="#freq">Frequência</a></li>
                     <li><a href="#pagamento">Pagamento</a></li>
-                    <li><a href="../view/loginadm.html">Sair</a></li>
+                    <li><a href="../view/loginusuario.html">Sair</a></li>
         </ul>
     </nav>
 
     <!-- Conteúdo principal da página -->
     <main>
-        <div class="cadastro">
-            <h1>Área do Adminstrador</h1>
+        <div class="iniciousuario">
+            <h1 id="olainicio">Olá,__________!</h1>
             <br>
+            <div id="treinos">
+                <h2>Treino A</h2> <br>
+                <br>
+                <br>
 
-            <form id="formCad" action="#" onsubmit="return false;">
+                <h2>Treino B</h2> <br>
+                <br>
+                <br>
                 
+                <h2>Treino C</h2> <br>
+                <br>
+                <br>
                 
-            </form>
+
+            </div>
+           
+            <button id="btnTopo" onclick="voltarAoTopo()">↑</button>
         </div>
-        <button id="btnTopo" onclick="voltarAoTopo()">↑</button>
+        
     </main>
-
+    <footer>
+        <p>&copy; 2024 Energy Gym. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>

@@ -6,13 +6,16 @@
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> -->
     <link rel="icon" href="../imagem/logo - Copia.png" type="image/png">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Energy Gym - Login</title>
+    <title>Energy Gym - Login interno</title>
     
 </head>
 <body>
     <script src="../js/main.js"></script>
     <!-- Cabeçalho com o ícone de menu -->
     <header class="header">
+        <div class="loginadm">
+            <a href="../view/loginusuario.html">Login - Clientes</a>
+        </div>
        <!-- <div class="menu-icon" onclick="toggleMenu()"> 
             &#9776;  HTML code for three bars (hamburger icon) 
         </div> -->
@@ -32,7 +35,7 @@
     <main>
 
     <div id="login">
-        <h1>Login</h1>
+        <h1>Login - Usuário interno</h1>
         <br>
         <form id="formLogin" action="#" onsubmit="return false;">
             <label class="loginemailusuario" for="email">Email:</label> 
@@ -48,7 +51,7 @@
 
             <div id="btn">
                 <br>
-                <button class="entrarbutton" type="submit" >Entrar</button>
+                <button type="button" class="entrarbutton" onclick="verificarLoginAdm()">Entrar</button>
                 <!-- <button type="submit">Entrar</button> -->
             </div>
         </form>

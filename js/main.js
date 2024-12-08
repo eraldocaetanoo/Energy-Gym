@@ -135,3 +135,41 @@ function showHide() {
         icon.classList.remove('hide')
     }
 }
+
+function verificarLoginAdm() {
+    // Valores esperados (podem ser substituídos por validações em banco de dados)
+    const usuarioCorreto = "admin";
+    const senhaCorreta = "12345";
+
+    // Obtendo os valores inseridos no formulário
+    const username = document.getElementById("email").value;
+    const password = document.getElementById("senha").value;
+
+    // Verificação de login
+    if (username === usuarioCorreto && password === senhaCorreta) {
+        alert("Login bem-sucedido!");
+        // Redireciona para outra página
+        window.location.href = '../view/adm.html';
+    } else {
+        alert("Usuário ou senha incorretos!");
+    }
+}
+
+function verificarLoginCliente() {
+    // Valores esperados (podem ser substituídos por validações em banco de dados)
+    const usuarioCorreto = "admin";
+    const senhaCorreta = "12345";
+
+    // Obtendo os valores inseridos no formulário
+    const username = document.getElementById("email").value;
+    const password = document.getElementById("senha").value;
+
+    // Verificação de login
+    if (username === usuarioCorreto && password === senhaCorreta) {
+        alert("Login bem-sucedido!");
+        // Redireciona para outra página
+        window.location.href = '../view/iniciousuario.html';
+    } else {
+        alert("Usuário ou senha incorretos!");
+    }
+}
