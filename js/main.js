@@ -122,17 +122,16 @@ function voltarAoTopo() {
 }
 
 
-function togglePassword() {
+// Função para mostrar/esconder a senha
+function showHide() {
     const senhaInput = document.getElementById('senha');
-    const toggleIcon = document.getElementById('toggleIcon');
+    const icon = document.getElementById('icon');
 
     if (senhaInput.type === 'password') {
-        senhaInput.type = 'text'; // Mostra a senha
-        toggleIcon.src = 'hiddeneye.png'; // Altera para imagem de ocultar
-        toggleIcon.alt = 'Ocultar senha';
+        senhaInput.setAttribute('type','text');
+        icon.classList.add('hide')
     } else {
-        senhaInput.type = 'password'; // Oculta a senha
-        toggleIcon.src = 'eye.png'; // Altera para imagem de mostrar
-        toggleIcon.alt = 'Mostrar senha';
+        senhaInput.setAttribute('type','password');
+        icon.classList.remove('hide')
     }
 }

@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 html {
@@ -193,6 +194,13 @@ button:active {
     background-color: green;
 }
 
+.entrarbutton{
+    background-color: rgb(15, 190, 30);
+}
+
+.entrarbutton:hover {
+    background-color: green;
+}
 
 label {
     margin-top: 25px;
@@ -211,6 +219,7 @@ label {
     font-size: 16px; /* Tamanho da fonte */
     box-sizing: border-box; /* Inclui padding na largura total */
     transition: border-color 0.3s, box-shadow 0.3s; /* Transições suaves */
+    box-shadow: 1px 1px 4px #000;
 }
 
 .inputForm:focus {
@@ -230,7 +239,31 @@ label {
     width: 100%; /* Ajusta a largura da div */
     display: flex;
     justify-content: center;
+    top: 0;
+    left: 0;
+    outline: none;
+    
 }
+
+#icon {
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    height: 30px;
+    width: 30px;
+    transform: translateY(-50%);
+    background: url('../imagem/eye.png');
+    background-size:cover;
+    cursor: pointer;
+    padding: 10px 10px;
+}
+
+#icon.hide{
+    background: url('../imagem/hiddeneye.png');
+    background-size:cover;
+}
+
+
 
 .toggle-password {
     position: absolute;
@@ -250,7 +283,7 @@ label {
     text-align: center;
     padding: 20px;
     border-radius: 8px; /* Opcional: adiciona bordas arredondadas */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opcional: sombra */
+    box-shadow: 4px 4px 4px #333333ce;
 }
 
 #formLogin{
@@ -260,8 +293,10 @@ label {
     text-align: center;
     padding: 20px;
     border-radius: 8px; /* Opcional: adiciona bordas arredondadas */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opcional: sombra */
+    box-shadow: 4px 4px 4px #333333ce;
 }
+
+
 
 #login {
     margin-top: 80px;
@@ -289,7 +324,7 @@ label {
     display: none; /* Inicialmente escondido */
     align-items: center; /* Centraliza o conteúdo verticalmente */
     justify-content: center; /* Centraliza o conteúdo horizontalmente */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+    box-shadow: 1px 1px 4px #000;
     transition: opacity 0.3s ease; /* Efeito suave */
 }
 
