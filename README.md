@@ -1,2 +1,2 @@
 # Energy-Gym
-Web developement for gyms
+Web development for gyms
