@@ -52,7 +52,7 @@ function recuperarValor() {
     const usuarionome = localStorage.getItem('nome');
     const usuarioemail = localStorage.getItem('email');
     const usuarionasci = localStorage.getItem('nasci');
-    const senhaUsuario = localStorage.getItem('senhaUsuario')
+    const senhaUsuario = localStorage.getItem('senhaUsuario');
 
     if (usuarioemail || usuarionome || usuarionasci || senhaUsuario) {
         // Formatar a data de nascimento no formato dd/mm/aaaa
@@ -157,8 +157,8 @@ function verificarLoginAdm() {
 
 function verificarLoginCliente() {
     // Valores esperados (podem ser substituídos por validações em banco de dados)
-    const usuarioCorreto = "admin";
-    const senhaCorreta = "12345";
+    const usuarioCorreto = localStorage.getItem('email');
+    const senhaCorreta = localStorage.getItem('senhaUsuario');
 
     // Obtendo os valores inseridos no formulário
     const username = document.getElementById("email").value;
@@ -173,3 +173,18 @@ function verificarLoginCliente() {
         alert("Usuário ou senha incorretos!");
     }
 }
+
+function myFunction() {
+    // Get the text field
+    var copyText = document.getElementById("senhaUsuario");
+  
+    // Select the text field
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+  
+     // Copy the text inside the text field
+    navigator.clipboard.writeText(copyText.value);
+  
+    // Alert the copied text
+    alert("Copied the text: " + copyText.value);
+  }

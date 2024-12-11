@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar LocalStorage</title>
+</head>
+<body>
+    <h1>Lista de Dados no LocalStorage</h1>
+    <ul id="storage-list"></ul>
+    
+
+    <script>
+        const listElement = document.getElementById("storage-list");
+
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+
+            const listItem = document.createElement("li");
+            listItem.textContent = `Chave: ${key}, Valor: ${value}`;
+            listElement.appendChild(listItem);
+        }
+    </script>
+</body>
+</html>
+<!-- Esse código de teste serve apenas para ver os dados que estão no local Storage -->
+<!--  -->

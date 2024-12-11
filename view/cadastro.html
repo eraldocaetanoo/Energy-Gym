@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Energy Gym - Cadastro</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../imagem/logo - Copia.png" type="image/png">
+    <!-- <link rel="stylesheet" href="../css/bootstrap.css"> -->
+    <link rel="icon" href="../imagem/raio.png" type="image/png">
 
 </head>
 <body>
@@ -59,7 +60,13 @@
                 <label class="nasc" for="nascUsuario">Data de nascimento:</label> 
                 <input class="inputForm" type="date" id="nascUsuario">
                 <label class="senha" for="senhaUsuario">Gerar senha do usuário:</label> 
-                <input class="inputForm" type="text" id="senhaUsuario" placeholder="Gerar senha" readonly="">
+                
+                <div class="inputsenha">
+                    <input class="inputForm" type="text" id="senhaUsuario" placeholder="Gerar senha" readonly="">
+                    <div id="copy" onclick="myFunction()"></div>
+                </div>
+                
+                
                 <p></p>
                 <button class="gerarSenha" onclick="getPassword()">Gerar senha do usuário</button>
                 
