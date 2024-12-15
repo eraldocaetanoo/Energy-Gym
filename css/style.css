@@ -227,7 +227,7 @@ label {
     text-shadow: 3px 3px 5px rgb(32, 30, 30);
 }
 
-.inputForm {
+.inputForm, .hidesenha {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 85%; /* Largura total */
     padding: 10px; /* Espaçamento interno */
@@ -240,13 +240,13 @@ label {
     box-shadow: 1px 1px 4px #000;
 }
 
-.inputForm:focus {
+.inputForm, .hidesenha:focus {
     border-color: #564caf; /* Cor da borda ao focar */
     box-shadow: 0 0 5px rgba(5, 137, 214, 0.5); /* Sombra ao focar */
     outline: none; /* Remove o contorno padrão */
 }
 
-.inputForm::placeholder {
+.inputForm, .hidesenha::placeholder {
     color: #aaa; /* Cor do texto placeholder */
     font-style: italic; /* Estilo do texto placeholder */
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -262,6 +262,12 @@ label {
     outline: none;
     
 }
+
+.hidesenha{
+    background-color:#ccc;
+    border-color: #564caf; /* Cor da borda ao focar */
+}
+
 
 #copy {
     position: absolute;
