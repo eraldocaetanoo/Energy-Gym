@@ -135,6 +135,7 @@ body {
 .sidebar ul li {
     padding: 15px;
     text-align: center;
+    padding-right: 20%;
 }
 
 .sidebar ul li a {
@@ -150,7 +151,7 @@ body {
 
 .foto_perfil{
     width: 90px; /* Define a largura da imagem */
-
+    
 
 }
 
@@ -389,7 +390,7 @@ footer {
     left: 0;
     width: 100%;
     text-align: center;
-    padding: 1px 0;
+    padding: 1px;
 }
 
 
