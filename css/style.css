@@ -32,6 +32,7 @@ body {
     align-items: center; /* Alinha os itens verticalmente */
     position: fixed; /* Torna o header o contêiner para posicionamento absoluto */
     background-color: rgb(50, 37, 169);
+    box-shadow: 1px 1px 3px #000;
     padding: 25px 30px;
     color: #fff;
     width: 100%;
@@ -121,6 +122,7 @@ body {
     transition: 0.3s;
     padding-top: 60px;
     z-index: 1000;
+    box-shadow: 1px 1px 3px #000;
 
 }
 
@@ -347,7 +349,7 @@ label {
 }
 
 
-.cadastro {
+.cadastro, .adm {
     margin-top: 80px;
 }
 
@@ -356,8 +358,6 @@ label {
 }
 
 #btnTopo {
-
-
     position: fixed; /* Fixa o botão na tela */
     bottom: 20px; /* Distância da parte inferior */
     right: 20px; /* Distância da parte direita */
@@ -367,7 +367,7 @@ label {
     border-radius: 50%; /* Forma redonda */
     width: 50px; /* Largura */
     height: 50px; /* Altura */
-    padding: 10px 15px;
+    padding: 5px 15px;
     font-size: 24px; /* Tamanho da seta */
     cursor: pointer; /* Cursor de mão ao passar */
     display: none; /* Inicialmente escondido */

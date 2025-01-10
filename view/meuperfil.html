@@ -13,38 +13,56 @@
     <link rel="icon" href="../imagem/raio.png" type="image/png">
 </head>
 <body>
-    <main class="">
-        <div class="">
-            <form class="box" id="form-form">
-                </div>
-            </form>
+    <script src="../js/main.js"></script>
+    <!-- Cabeçalho com o ícone de menu -->
+    <header class="header">
+        <!-- image-->
+        
+        <div class="menu-icon" onclick="toggleMenu()"> <!-- Ícone de três barras -->
+            &#9776; <!-- HTML code for three bars (hamburger icon) -->
         </div>
+        <br>
+        <div class="logo">
+            <a href="../view/iniciousuario.html"><img src="../imagem/logo.png" alt="logo">
+            <h1>ENERGY GYM</h1>
+            </a>
+        </div>
+        <br>
+        <div class="sobre">
+            <a href="#sobre">QUEM SOMOS</a>
+        </div>
+    </header>
+    <!-- Menu lateral -->
+    <nav class="sidebar" id="sidebar">
+        
+        <ul>
+            <li><img class="foto_perfil" src="../imagem/pngegg.png" alt="foto_perfil">
+                <p></p>
+                    <br>
+                    <a href="../view/meuperfil.html">Meu Perfil</a>
+                    <li><a href="../view/iniciousuario.html">Aulas</a></li>
+                    <li><a href="#avaliacoes">Avaliações Físicas</a></li>
+                    <li><a href="#freq">Frequência</a></li>
+                    <li><a href="#pagamento">Pagamento</a></li>
+                    <li><a href="../view/loginusuario.html">Sair</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="image-upload">
+            <img src="">
+            <i class="bi bi-cloud-arrow-up"></i>
+            <input type="file">
+            <br>
+            <br>
+            <br>
+            <a>
+            <button onclick="Text">Congelar matricula</button>
+                <br>
+                <br>
+                <button onclick="Text">Voltar</button>
+            </a></div>
+
+
     </main>
-<!-- Cabeçalho com o ícone de menu -->
-<header class="header">
-</body>
-    <!-- image-->
-    <div class="image-upload">
-        <img src="">
-        <i class="bi bi-cloud-arrow-up"></i>
-        <input type="file">
-        <br>
-        <br>
-        <br>
-        <a>
-        <button onclick="Text">Congelar matricula</button>
-            <br>
-            <br>
-            <button onclick="Text">Voltar</button>
-        </a>
-    </div>
-    <div class="logo">
-        <a href="../view/iniciousuario.html"><img src="../imagem/logo.png" alt="logo">
-        <h1>ENERGY GYM</h1>
-        </a>
-    </div>
-    <br>
-    <div class="sobre">
-        <a href="#sobre">QUEM SOMOS</a>
-    </div>
 </html>
