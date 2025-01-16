@@ -186,7 +186,7 @@ button {
     font-size: 20px; /* Tamanho da fonte */
     cursor: pointer; /* Mostra a "mãozinha" ao passar o mouse */
     transition: background-color 0.3s; /* Animação suave ao passar o mouse */
-   
+    box-shadow: 1px 2px 4px #444242;
 }
 
 button:hover {
@@ -413,3 +413,9 @@ footer {
     text-shadow: 1px 2px 4px #280c33;
 }
 
+
+
+#lista_opcoes{
+    display: flex;
+    justify-content: space-between;
+}

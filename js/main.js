@@ -47,6 +47,172 @@ function salvarValor() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('formCad').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        console.log('Evento de submit capturado!'); // Teste para verificar o evento.
+
+        // Obtém os dados do formulário
+        const nome = document.getElementById('nomeUsuario').value;
+        const email = document.getElementById('emailUsuario').value;
+        const nascimento = document.getElementById('nascUsuario').value;
+        const senha = document.getElementById('senhaUsuario').value;
+
+        if ((nome || email || nascimento) && senha!='') {
+            // Verifica se há dados existentes no Local Storage
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+
+            let dataFormatada = '';
+            if (nascimento) {
+                const partesData = nascimento.split('-'); // Divide a data pelo "-"
+                dataFormatada = `${partesData[2]}/${partesData[1]}/${partesData[0]}`; // Reorganiza para dd/mm/aaaa
+            }
+            
+            // Adiciona o novo usuário
+            users.push({ nome, email, dataFormatada, senha });
+
+            // Salva de volta no Local Storage
+            localStorage.setItem('users', JSON.stringify(users));
+
+            // Feedback para o usuário
+            //alert('Usuário cadastrado com sucesso!');
+            showTemporaryAlertSuccess('Usuário cadastrado com sucesso!', 3000);
+            // Limpa o formulário
+            document.getElementById('formCad').reset();
+        } else {
+            showTemporaryAlertDanger('Por favor, preencha todos os campos!', 3000);
+            //alert('Por favor, preencha todos os campos!');
+        }
+
+        
+    });
+
+   
+});
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Botão para exibir os dados
+    document.getElementById('recupbutton').addEventListener('click', function () {
+        // Obtém os dados do localStorage
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+
+        // Seleciona a lista no HTML
+        const listaUsuarios = document.getElementById('userList');
+        console.log('Evento de submit capturado!'); // Teste para verificar o evento.
+        // Limpa a lista antes de adicionar os itens
+        listaUsuarios.innerHTML = '';
+        if (users.length === 0) {
+            //alert('Nenhum dado encontrado no localStorage.');
+            showTemporaryAlertDanger('Nenhum aluno cadastrado!', 3000);
+            return;
+        }
+        users.reverse();
+        // Adiciona cada usuário como um item da lista
+        users.forEach(user => {
+            const li = document.createElement('li');
+            li.className = 'list-group-item list-group-item-action'; // Classe Bootstrap para estilizar
+
+
+            // Adiciona os dados como elementos separados
+            //const numero = document.createElement('div');
+            //numero.textContent = `${user.numero}`;
+            //li.appendChild(numero);
+
+            const nome = document.createElement('div');
+            nome.textContent = `Nome: \u00A0 \u00A0${user.nome}`;
+            li.appendChild(nome);
+
+            const email = document.createElement('div');
+            email.textContent = `E-mail: \u00A0 \u00A0${user.email}`;
+            li.appendChild(email);
+
+            const nascimento = document.createElement('div');
+            nascimento.textContent = `Data de nascimento: \u00A0 \u00A0${user.dataFormatada}`;
+            li.appendChild(nascimento);
+
+            const senha = document.createElement('div');
+            senha.textContent = `Senha: \u00A0 \u00A0${user.senha}`;
+            li.appendChild(senha);
+
+    
+
+            // Adiciona o item à lista
+            listaUsuarios.appendChild(li);
+            // Decrementa o número
+
+        });
+
+        
+    });
+
+    
+    
+    
+
+    document.getElementById('limparStorage').addEventListener('click', function () {
+        localStorage.clear(); // Limpa todos os dados do localStorage
+        showTemporaryAlertDanger('Todos os cadastros foram excluídos!', 3000);
+        //alert('Dados do localStorage foram apagados!');
+        document.getElementById('userList').innerHTML = ''; // Limpa a lista exibida
+    });
+});  
+
+// Função para exibir o alerta temporário
+function showTemporaryAlertDanger(message, duration) {
+    // Verifica se um alerta já está sendo exibido
+    if (document.getElementById('temporaryAlert')) return;
+
+    // Cria o elemento de alerta
+    const alertDiv = document.createElement('div');
+    alertDiv.id = 'temporaryAlert';
+    alertDiv.className = 'alert alert-danger position-fixed text-center';
+    alertDiv.style.zIndex = '1050'; // Garante que esteja visível
+    alertDiv.style.top = '50%'; // Centraliza verticalmente
+    alertDiv.style.left = '50%'; // Centraliza horizontalmente
+    alertDiv.style.transform = 'translate(-50%, -50%)'; // Ajusta para o centro
+    alertDiv.style.width = 'fit-content'; // Ajusta a largura ao conteúdo
+    alertDiv.style.padding = '20px'; // Ajusta o espaçamento interno
+    alertDiv.textContent = message;
+
+    // Adiciona o alerta ao body
+    document.body.appendChild(alertDiv);
+
+    // Remove o alerta após o tempo especificado
+    setTimeout(() => {
+        alertDiv.remove();
+    }, duration);
+}
+
+// Função para exibir o alerta temporário
+function showTemporaryAlertSuccess(message, duration) {
+    // Verifica se um alerta já está sendo exibido
+    if (document.getElementById('temporaryAlert')) return;
+
+    // Cria o elemento de alerta
+    const alertDiv = document.createElement('div');
+    alertDiv.id = 'temporaryAlert';
+    alertDiv.className = 'alert alert-success position-fixed text-center';
+    alertDiv.style.zIndex = '1050'; // Garante que esteja visível
+    alertDiv.style.top = '50%'; // Centraliza verticalmente
+    alertDiv.style.left = '50%'; // Centraliza horizontalmente
+    alertDiv.style.transform = 'translate(-50%, -50%)'; // Ajusta para o centro
+    alertDiv.style.width = 'fit-content'; // Ajusta a largura ao conteúdo
+    alertDiv.style.padding = '20px'; // Ajusta o espaçamento interno
+    alertDiv.textContent = message;
+
+    // Adiciona o alerta ao body
+    document.body.appendChild(alertDiv);
+
+    // Remove o alerta após o tempo especificado
+    setTimeout(() => {
+        alertDiv.remove();
+    }, duration);
+}
+
 // Função para recuperar dados (essa função é chamada quando o boão é clicado)
 function recuperarValor() {
     const usuarionome = localStorage.getItem('nome');
@@ -75,6 +241,7 @@ function recuperarValor() {
 
 // Função para gerar senha
 function getPassword() {
+    
     // Grupos de caracteres
     var numbers = "0123456789";
     var lowercase = "abcdefghijklmnopqrstuvwxyz";
@@ -147,11 +314,13 @@ function verificarLoginAdm() {
 
     // Verificação de login
     if (username === usuarioCorreto && password === senhaCorreta) {
-        alert("Login bem-sucedido!");
+        showTemporaryAlertSuccess('Login bem-sucedido!', 3000);
+        //alert("Login bem-sucedido!");
         // Redireciona para outra página
         window.location.href = '../view/adm.html';
     } else {
-        alert("Usuário ou senha incorretos!");
+        showTemporaryAlertDanger('Usuário ou senha incorretos!', 3000);
+        //alert("Usuário ou senha incorretos!");
     }
 }
 
@@ -166,11 +335,13 @@ function verificarLoginCliente() {
 
     // Verificação de login
     if (username === usuarioCorreto && password === senhaCorreta) {
-        alert("Login bem-sucedido!");
+        //alert("Login bem-sucedido!");
+        showTemporaryAlertSuccess('Login bem-sucedido!', 3000);
         // Redireciona para outra página
         window.location.href = '../view/iniciousuario.html';
     } else {
-        alert("Usuário ou senha incorretos!");
+        showTemporaryAlertDanger('Usuário ou senha incorretos!', 3000);
+        //alert("Usuário ou senha incorretos!");
     }
 }
 
@@ -182,9 +353,10 @@ function myFunction() {
     copyText.select();
     copyText.setSelectionRange(0, 99999); // For mobile devices
   
-     // Copy the text inside the text field
+    // Copy the text inside the text field
     navigator.clipboard.writeText(copyText.value);
   
     // Alert the copied text
-    alert("Senha salva na área de transferência: " + copyText.value);
+    showTemporaryAlertSuccess('Senha salva na área de transferência: ' + copyText.value, 3000);
+    //alert("Senha salva na área de transferência: " + copyText.value);
   }

@@ -50,32 +50,35 @@
     <!-- Conteúdo principal da página -->
     <main>
         <div class="cadastro">
-            <h1>Cadastro</h1>
+            <h1><strong>Cadastro</strong></h1>
             <br>
 
             <form id="formCad" action="#" onsubmit="return false;">
 
                 <label class="nomecompleto" for="nomeUsuario">Nome completo:</label> 
                 <input class="inputForm" type="text" id="nomeUsuario" placeholder="Digite o nome"> 
+                
                 <label class="email" for="emailUsuario">E-mail:</label> 
-                <input class="inputForm" type="text" id="emailUsuario" placeholder="Digite o e-mail">
+                <input class="inputForm" type="email" id="emailUsuario" placeholder="Digite o e-mail">
+                
                 <label class="nasc" for="nascUsuario">Data de nascimento:</label> 
                 <input class="inputForm" type="date" id="nascUsuario">
-                <label class="senha" for="senhaUsuario">Gerar senha do usuário:</label> 
                 
+                <label class="senha" for="senhaUsuario">Gerar senha do usuário:</label> 
                 <div class="inputsenha">
-                    <input class="hidesenha" type="text" id="senhaUsuario" placeholder="Gerar senha" readonly>
+                    <input class="hidesenha" type="password" id="senhaUsuario" placeholder="Gerar senha" readonly>
                     <div id="copy" onclick="myFunction()"></div>
                 </div>
                 
                 
                 <p></p>
-                <button class="gerarSenha" onclick="getPassword()">Gerar senha do usuário</button>
+                <button class="gerarSenha" type="button" onclick="getPassword()">Gerar senha do usuário</button>
+                <br>
+                <br>
+                <button class="salvarbutton" type="submit">Salvar</button>
                 
-                <p></p><br>
-                <button class="salvarbutton" onclick="salvarValor()">Salvar</button>
-    
-                <button class="recupbutton" onclick="recuperarValor()">Vizualizar dados salvos</button>
+                <!-- <button class="recupbutton" id="recupbutton" type="button" >Vizualizar dados salvos</button> -->
+                <br>
                 
             </form>
             
@@ -83,7 +86,8 @@
         <button id="btnTopo" onclick="voltarAoTopo()">↑</button>
     </main>
     <footer>
-        <p>&copy; 2024 Energy Gym. Todos os direitos reservados.</p>
+        <p>&copy; 2025 Energy Gym. Todos os direitos reservados.</p>
     </footer>
+   
 </body>
 </html>
