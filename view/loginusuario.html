@@ -11,7 +11,7 @@
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="../js/main.js"></script>
+    
     <!-- Cabeçalho com o ícone de menu -->
     <header class="header">
         <div class="loginadm">
@@ -28,7 +28,7 @@
         </div>
         <br>
         <div class="sobre">
-            <a href="#sobre">QUEM SOMOS</a>
+            <a href="../view/sobre.html">QUEM SOMOS</a>
         </div>
         
     </header>
@@ -41,26 +41,55 @@
         <form id="formLogin" action="#" onsubmit="return false;">
             <label class="loginemailusuario" for="email">Email:</label> 
             <div class="input">
-                <input class="inputForm" id="email" placeholder="Digite seu email" type="email" required>
+                <input class="inputForm" id="email" placeholder="Digite seu email" autocomplete="use" type="email" required>
             </div> 
             <label class="loginusuario" for="senha">Senha:</label>
             <div class="inputsenha">
-                <input class="inputForm" id="senha" placeholder="Digite sua senha" type="password">
+                <input class="inputForm" id="senha" placeholder="Digite sua senha" autocomplete="current-password" type="password" required>
                 <div id="icon" onclick="showHide()"></div>
                
             </div>
 
             <div id="btn">
                 <br>
-                <button type="button" class="entrarbutton" onclick="verificarLoginCliente()">Entrar</button>
+                <!-- onclick="verificarLoginCliente()" -->
+                <button type="button" id="entrarbutton" class="entrarbutton">Entrar</button>
                 <!-- <button type="submit">Entrar</button> -->
             </div>
         </form>
-        <button id="btnTopo" onclick="voltarAoTopo()">↑</button>
+        <button id="btnTopo" type="button" onclick="voltarAoTopo()">↑</button>
     </div>
     </main>
     <footer>
         <p>&copy; 2025 Energy Gym. Todos os direitos reservados.</p>
     </footer>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('entrarbutton').addEventListener('click', function () {
+            // Obtém os dados do localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            
+            // Captura os valores do formulário
+            const emailLogin = document.getElementById('email').value;
+            const senhaLogin = document.getElementById('senha').value;
+
+            // Verifica se o email e a senha correspondem a um usuário
+            const usuarioValido = users.find(user => user.email === emailLogin && user.senha === senhaLogin);
+
+            if (usuarioValido) {
+                // Se válido, redireciona para a página inicial do sistema
+                showTemporaryAlertSuccess('Login bem-sucedido!', 3000);
+                window.location.href = '../view/iniciousuario.html'; // Substitua pelo link real da página inicial
+            } else {
+                // Caso contrário, exibe uma mensagem de erro
+                showTemporaryAlertDanger('Usuário ou senha incorretos!', 3000);
+            }
+        });
+
+    });
+
+
+    </script>
 </body>
 </html>

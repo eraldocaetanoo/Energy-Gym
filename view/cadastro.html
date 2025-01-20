@@ -12,7 +12,7 @@
 
 </head>
 <body>
-    <script src="../js/main.js"></script>
+    
     <!-- Cabeçalho com o ícone de menu -->
     <header class="header">
         <div class="menu-icon" onclick="toggleMenu()"> <!-- Ícone de três barras -->
@@ -26,7 +26,7 @@
         </div>
         <br>
         <div class="sobre">
-            <a href="#sobre">QUEM SOMOS</a>
+            <a href="../view/sobre.html">QUEM SOMOS</a>
         </div>
         
     </header>
@@ -39,7 +39,7 @@
             <p></p>
             <br>
             <a href="#perfil">Meu Perfil</a>
-            <li><a href="../view/cadastro.html">Cadastro de alunos</a></li>
+            <li><a href="../view/adm.html">Área do administrador</a></li>
             <li><a href="#avaliacoes">Avaliações Físicas</a></li>
             <li><a href="#freq">Frequência</a></li>
             <li><a href="#pagamento">Pagamento</a></li>
@@ -77,7 +77,7 @@
                 <br>
                 <button class="salvarbutton" type="submit">Salvar</button>
                 
-                <!-- <button class="recupbutton" id="recupbutton" type="button" >Vizualizar dados salvos</button> -->
+                
                 <br>
                 
             </form>
@@ -88,6 +88,53 @@
     <footer>
         <p>&copy; 2025 Energy Gym. Todos os direitos reservados.</p>
     </footer>
-   
+    <script src="../js/main.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('formCad').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                console.log('Evento de submit capturado!'); // Teste para verificar o evento.
+
+                // Obtém os dados do formulário
+                const nome = document.getElementById('nomeUsuario').value;
+                const email = document.getElementById('emailUsuario').value;
+                const nascimento = document.getElementById('nascUsuario').value;
+                const senha = document.getElementById('senhaUsuario').value;
+
+                if ((nome || email || nascimento) && senha!='') {
+                    // Verifica se há dados existentes no Local Storage
+                    let users = JSON.parse(localStorage.getItem('users')) || [];
+
+                    let dataFormatada = '';
+                    if (nascimento) {
+                        const partesData = nascimento.split('-'); // Divide a data pelo "-"
+                        dataFormatada = `${partesData[2]}/${partesData[1]}/${partesData[0]}`; // Reorganiza para dd/mm/aaaa
+                    }
+                    
+                    // Adiciona o novo usuário
+                    users.push({ nome, email, dataFormatada, senha });
+
+                    // Salva de volta no Local Storage
+                    localStorage.setItem('users', JSON.stringify(users));
+
+                    // Feedback para o usuário
+                    //alert('Usuário cadastrado com sucesso!');
+                    showTemporaryAlertSuccess('Usuário cadastrado com sucesso!', 3000);
+                    // Limpa o formulário
+                    document.getElementById('formCad').reset();
+                } else {
+                    showTemporaryAlertDanger('Por favor, preencha todos os campos!', 3000);
+                    //alert('Por favor, preencha todos os campos!');
+                }
+
+                
+            });
+
+        
+        });
+
+    </script>
 </body>
 </html>
