@@ -94,75 +94,76 @@
 
 
     <script>
+
         function formatarDataParaExibir(data) {
-    const partes = data.split('-');
-    if (partes.length === 3) {
-        const ano = partes[0];
-        const mes = partes[1];
-        const dia = partes[2];
-        return `${dia}/${mes}/${ano}`; // Formato dd/mm/aaaa
-    }
-    return data; // Se não tiver o formato esperado, retorna a data original
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Botão para exibir os dados
-    document.getElementById('recupbutton').addEventListener('click', function () {
-        // Obtém os dados do localStorage
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-
-        // Seleciona a lista no HTML
-        const listaUsuarios = document.getElementById('userList');
-        console.log('Evento de submit capturado!'); // Teste para verificar o evento.
-        // Limpa a lista antes de adicionar os itens
-        listaUsuarios.innerHTML = '';
-        if (users.length === 0) {
-            showTemporaryAlertDanger('Nenhum aluno cadastrado!', 3000);
-            return;
+        const partes = data.split('-');
+        if (partes.length === 3) {
+            const ano = partes[0];
+            const mes = partes[1];
+            const dia = partes[2];
+            return `${dia}/${mes}/${ano}`; // Formato dd/mm/aaaa
+        }
+        return data; // Se não tiver o formato esperado, retorna a data original
         }
 
-        // Adiciona cada usuário como um item da lista
-        users.forEach((user, index) => {
-            const li = document.createElement('li');
-            li.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-start';
+        document.addEventListener('DOMContentLoaded', function () {
+            // Botão para exibir os dados
+            document.getElementById('recupbutton').addEventListener('click', function () {
+                // Obtém os dados do localStorage
+                const users = JSON.parse(localStorage.getItem('users')) || [];
 
-            // Dados do usuário
-            const info = document.createElement('div');
-            info.innerHTML = `
-                <div><strong>Nome:</strong> \u00A0 ${user.nome}</div>
-                <div><strong>E-mail:</strong> \u00A0 ${user.email}</div>
-                <div><strong>Data de nascimento:</strong> \u00A0 ${formatarDataParaExibir(user.dataFormatada)}</div>
-                <div><strong>Senha:</strong> \u00A0 ${user.senha}</div>
-            `;
-            li.appendChild(info);
+                // Seleciona a lista no HTML
+                const listaUsuarios = document.getElementById('userList');
+                console.log('Evento de submit capturado!'); // Teste para verificar o evento.
+                // Limpa a lista antes de adicionar os itens
+                listaUsuarios.innerHTML = '';
+                if (users.length === 0) {
+                    showTemporaryAlertDanger('Nenhum aluno cadastrado!', 3000);
+                    return;
+                }
 
-            // Contêiner para os botões
-            const buttonGroup = document.createElement('div');
+                // Adiciona cada usuário como um item da lista
+                users.forEach((user, index) => {
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-start';
 
-            // Botão de Editar
-            const editButton = document.createElement('button');
-            editButton.className = 'btn btn-warning btn-sm me-2'; // Classes Bootstrap
-            editButton.textContent = 'Editar';
-            editButton.addEventListener('click', function () {
-                editarUsuario(index);
+                    // Dados do usuário
+                    const info = document.createElement('div');
+                    info.innerHTML = `
+                        <div><strong>Nome:</strong> \u00A0 ${user.nome}</div>
+                        <div><strong>E-mail:</strong> \u00A0 ${user.email}</div>
+                        <div><strong>Data de nascimento:</strong> \u00A0 ${formatarDataParaExibir(user.dataFormatada)}</div>
+                        <div><strong>Senha:</strong> \u00A0 ${user.senha}</div>
+                    `;
+                    li.appendChild(info);
+
+                    // Contêiner para os botões
+                    const buttonGroup = document.createElement('div');
+
+                    // Botão de Editar
+                    const editButton = document.createElement('button');
+                    editButton.className = 'btn btn-warning btn-sm me-2'; // Classes Bootstrap
+                    editButton.textContent = 'Editar';
+                    editButton.addEventListener('click', function () {
+                        editarUsuario(index);
+                    });
+                    buttonGroup.appendChild(editButton);
+
+                    // Botão de Excluir
+                    const deleteButton = document.createElement('button');
+                    deleteButton.className = 'btn btn-danger btn-sm'; // Classes Bootstrap
+                    deleteButton.textContent = 'Excluir';
+                    deleteButton.addEventListener('click', function () {
+                        excluirUsuario(index);
+                    });
+                    buttonGroup.appendChild(deleteButton);
+
+                    li.appendChild(buttonGroup);
+
+                    // Adiciona o item à lista
+                    listaUsuarios.appendChild(li);
+                });
             });
-            buttonGroup.appendChild(editButton);
-
-            // Botão de Excluir
-            const deleteButton = document.createElement('button');
-            deleteButton.className = 'btn btn-danger btn-sm'; // Classes Bootstrap
-            deleteButton.textContent = 'Excluir';
-            deleteButton.addEventListener('click', function () {
-                excluirUsuario(index);
-            });
-            buttonGroup.appendChild(deleteButton);
-
-            li.appendChild(buttonGroup);
-
-            // Adiciona o item à lista
-            listaUsuarios.appendChild(li);
-        });
-    });
 
             // Função para editar um usuário
             function editarUsuario(index) {
