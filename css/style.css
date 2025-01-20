@@ -241,7 +241,7 @@ button:active {
     background-color: green;
 }
 
-label {
+.labelLogin{
     margin-top: 25px;
     display: flex;
     margin-left: 10%; /* Espaçamento entre label e input */
