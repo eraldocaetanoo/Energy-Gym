@@ -419,3 +419,27 @@ footer {
     display: flex;
     justify-content: space-between;
 }
+
+
+.janela-modal{
+    width: 10vw;
+    height: 20vh;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: rgba(10, 10, 10, 0.493);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    border-radius: 500px;
+.modal{
+        width: 60%;
+        min-width: 100px;
+        min-height: 200px;
+        background-color: #ffffff81;
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+}
+}
+
