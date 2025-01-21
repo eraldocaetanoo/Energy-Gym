@@ -10,7 +10,7 @@
 
 </head>
 <body>
-    <script src="../js/main.js"></script>
+    
     <!-- Cabeçalho com o ícone de menu -->
     <header class="header">
         <div class="menu-icon" onclick="toggleMenu()"> <!-- Ícone de três barras -->
@@ -24,7 +24,7 @@
         </div>
         <br>
         <div class="sobre">
-            <a href="#sobre">QUEM SOMOS</a>
+            <a href="../view/sobre.html">QUEM SOMOS</a>
         </div>
         
     </header>
@@ -36,7 +36,7 @@
             <li><img class="foto_perfil" src="../imagem/pngegg.png" alt="foto_perfil">
                 <p></p>
                     <br>
-                    <a href="#perfil">Meu Perfil</a>
+                    <a href="../view/meuperfil.html">Meu Perfil</a>
                     <li><a href="../view/adm.html">Área do administrador</a></li>
                     <li><a href="#avaliacoes">Avaliações Físicas</a></li>
                     <li><a href="#freq">Frequência</a></li>
@@ -48,31 +48,300 @@
     <!-- Conteúdo principal da página -->
     <main>
         <div class="adm">
-            <h1><strong>Listagem de alunos</strong></h1>
-            <br>
-           
-
-            <!-- <form id="formCad" action="#" onsubmit="return false;">
-            
+            <div class="">
+                <h1><strong>Listagem de alunos</strong></h1>
                 
-            </form> -->
-            <div id="lista_opcoes">
-                <button class="btn btn-primary" id="recupbutton" type="button">Vizualizar todos os alunos cadastrados</button>
-                
-                <button type="button" id="limparStorage" class="btn btn-danger">Excluir todos os cadastros</button>
-            </div>
-            <br>
-            <div>
-                <strong>
-                    <ul class="list-group" id="userList"></ul>
-                </strong>
-            </div>
+                <!-- <div>
+                    <nav class="navbar navbar-light">
+                        <form class="form-inline d-flex">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Pesquisar cadastro:</span>
+                            </div>
+                            <input id="pesquisar" class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                            <button class="btn btn-success" type="submit">Pesquisar</button>
+                        </form>
+                    </nav>
+                </div> -->
 
+                <br>
+                <div>
+                    <ul class="list-group" id="userLists"></ul>
+                </div>
+                <br>
+
+                <div id="lista_opcoes">
+                    <a href="../view/cadastro.html">
+                    <button type="button" class="btn btn-success" id="cadastrar">Cadastrar novo aluno</button>
+                    </a>
+                    <button class="btn btn-primary" id="recupbutton" type="button">Vizualizar todos os alunos cadastrados</button>
+                    
+                    <button type="button" id="limparStorage" class="btn btn-danger">Excluir todos os cadastros</button>
+                </div>
+                <br>
+                
+                <div>
+                        <ul class="list-group" id="userList"></ul>
+                </div>
+                <br>
+            </div>
         </div>
         <button id="btnTopo" onclick="voltarAoTopo()">↑</button>
     </main>
     <footer>
         <p>&copy; 2025 Energy Gym. Todos os direitos reservados.</p>
     </footer>
+    <script src="../js/main.js"></script>
+
+
+    <script>
+
+        function formatarDataParaExibir(data) {
+        const partes = data.split('-');
+        if (partes.length === 3) {
+            const ano = partes[0];
+            const mes = partes[1];
+            const dia = partes[2];
+            return `${dia}/${mes}/${ano}`; // Formato dd/mm/aaaa
+        }
+        return data; // Se não tiver o formato esperado, retorna a data original
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Botão para exibir os dados
+            document.getElementById('recupbutton').addEventListener('click', function () {
+                // Obtém os dados do localStorage
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+
+                // Seleciona a lista no HTML
+                const listaUsuarios = document.getElementById('userList');
+                console.log('Evento de submit capturado!'); // Teste para verificar o evento.
+                // Limpa a lista antes de adicionar os itens
+                listaUsuarios.innerHTML = '';
+                if (users.length === 0) {
+                    showTemporaryAlertDanger('Nenhum aluno cadastrado!', 3000);
+                    return;
+                }
+
+                // Adiciona cada usuário como um item da lista
+                users.forEach((user, index) => {
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-start';
+
+                    // Dados do usuário
+                    const info = document.createElement('div');
+                    info.innerHTML = `
+                        <div><strong>Nome:</strong> \u00A0 ${user.nome}</div>
+                        <div><strong>E-mail:</strong> \u00A0 ${user.email}</div>
+                        <div><strong>Data de nascimento:</strong> \u00A0 ${formatarDataParaExibir(user.dataFormatada)}</div>
+                        <div><strong>Senha:</strong> \u00A0 ${user.senha}</div>
+                    `;
+                    li.appendChild(info);
+
+                    // Contêiner para os botões
+                    const buttonGroup = document.createElement('div');
+
+                    // Botão de Editar
+                    const editButton = document.createElement('button');
+                    editButton.className = 'btn btn-warning btn-sm me-2'; // Classes Bootstrap
+                    editButton.textContent = 'Editar';
+                    editButton.addEventListener('click', function () {
+                        editarUsuario(index);
+                    });
+                    buttonGroup.appendChild(editButton);
+
+                    // Botão de Excluir
+                    const deleteButton = document.createElement('button');
+                    deleteButton.className = 'btn btn-danger btn-sm'; // Classes Bootstrap
+                    deleteButton.textContent = 'Excluir';
+                    deleteButton.addEventListener('click', function () {
+                        excluirUsuario(index);
+                    });
+                    buttonGroup.appendChild(deleteButton);
+
+                    li.appendChild(buttonGroup);
+
+                    // Adiciona o item à lista
+                    listaUsuarios.appendChild(li);
+                });
+            });
+
+            // Função para editar um usuário
+            function editarUsuario(index) {
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                const user = users[index];
+
+                // Função para converter a data para o formato yyyy-mm-dd para o campo "date"
+                function formatarDataParaInput(data) {
+                    const partes = data.split('/');
+                    if (partes.length === 3) {
+                        const ano = partes[2];
+                        const mes = partes[1].padStart(2, '0'); // Garantir que o mês tenha 2 dígitos
+                        const dia = partes[0].padStart(2, '0'); // Garantir que o dia tenha 2 dígitos
+                        return `${ano}-${mes}-${dia}`; // Formato yyyy-mm-dd
+                    }
+                    return data; // Se não tiver o formato esperado, retorna a data original
+                }
+
+                const formHtml = `
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Editar Usuário</h5>
+                                <button type="button" class="btn-close" id="cancelarEdicao" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="formEdicao">
+                                    <div class="mb-3">
+                                        <label for="novoNome" class="form-label">Nome:</label>
+                                        <input type="text" class="form-control" id="novoNome" value="${user.nome}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="novoEmail" class="form-label">E-mail:</label>
+                                        <input type="email" class="form-control" id="novoEmail" value="${user.email}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="novaData" class="form-label">Data de Nascimento:</label>
+                                        <input type="date" class="form-control" id="novaData" value="${formatarDataParaInput(user.dataFormatada)}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="novaSenha" class="form-label">Senha:</label>
+                                        <input type="password" class="form-control" id="novaSenha" value="${user.senha}">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="salvarEdicao">Salvar</button>
+                                <button type="button" class="btn btn-secondary" id="cancelarEdicaof">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Exibir o formulário em um modal ou elemento da página
+                const modal = document.createElement('div');
+                modal.innerHTML = formHtml;
+                modal.style.position = 'fixed';
+                modal.style.top = '50%';
+                modal.style.left = '50%';
+                modal.style.transform = 'translate(-50%, -50%)';
+                modal.style.padding = '20px';
+                modal.style.border = '1px solid #ccc';
+                modal.style.zIndex = '1000';
+                modal.className = 'modal fade show d-block';
+                modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'; // Fundo escurecido
+                modal.style.zIndex = '1050'; // Z-index padrão para modais do Bootstrap
+                modal.style.width = '100%';
+                modal.style.height = '100%';
+                
+                document.body.appendChild(modal);
+
+                // Ação para salvar a edição
+                document.getElementById('salvarEdicao').addEventListener('click', () => {
+                    const novoNome = document.getElementById('novoNome').value || user.nome;
+                    const novoEmail = document.getElementById('novoEmail').value || user.email;
+                    const novaData = document.getElementById('novaData').value || user.dataFormatada;  // Essa data já estará no formato yyyy-mm-dd
+                    const novaSenha = document.getElementById('novaSenha').value || user.senha;
+
+                    // Atualiza os dados no array e no localStorage
+                    users[index] = { nome: novoNome, email: novoEmail, dataFormatada: novaData, senha: novaSenha };
+                    localStorage.setItem('users', JSON.stringify(users));
+
+                    // Remove o modal
+                    document.body.removeChild(modal);
+                    showTemporaryAlertSuccess('Dados salvos com sucesso!', 3000);
+                    // Atualiza a lista sem recarregar a página
+                    document.getElementById('recupbutton').click();
+                    
+                });
+
+                // Ação para cancelar a edição no X
+                document.getElementById('cancelarEdicao').addEventListener('click', () => {
+                    document.body.removeChild(modal);
+                });
+
+                // Ação para cancelar a edição no botão Cancelar
+                document.getElementById('cancelarEdicaof').addEventListener('click', () => {
+                    document.body.removeChild(modal);
+                });
+            }
+            // Função para excluir um usuário
+            function excluirUsuario(index) {
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                users.splice(index, 1); // Remove o usuário do array
+                localStorage.setItem('users', JSON.stringify(users)); // Atualiza o localStorage
+                showTemporaryAlertDanger('Cadastro excluído!', 3000);
+                // Atualiza a lista sem recarregar a página
+                document.getElementById('recupbutton').click();
+            }
+
+            document.getElementById('limparStorage').addEventListener('click', function () {
+                localStorage.clear(); // Limpa todos os dados do localStorage
+                showTemporaryAlertDanger('Todos os cadastros foram excluídos!', 3000);
+                //alert('Dados do localStorage foram apagados!');
+                document.getElementById('userList').innerHTML = ''; // Limpa a lista exibida
+            });
+
+        });
+    </script>
+
+
+    <!-- <script>
+        //Script js para listar os cadastros
+        document.addEventListener('DOMContentLoaded', function () {
+        // Botão para exibir os dados
+        document.getElementById('recupbutton').addEventListener('click', function () {
+            // Obtém os dados do localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Seleciona a lista no HTML
+            const listaUsuarios = document.getElementById('userList');
+            console.log('Evento de submit capturado!'); // Teste para verificar o evento.
+            // Limpa a lista antes de adicionar os itens
+            listaUsuarios.innerHTML = '';
+            if (users.length === 0) {
+                //alert('Nenhum dado encontrado no localStorage.');
+                showTemporaryAlertDanger('Nenhum aluno cadastrado!', 3000);
+                return;
+            }
+            users.reverse();
+            // Adiciona cada usuário como um item da lista
+            users.forEach(user => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item list-group-item-action'; // Classe Bootstrap para estilizar
+
+                const nome = document.createElement('div');
+                nome.innerHTML = `<strong>Nome:</strong     > \u00A0 \u00A0${user.nome}`;
+                li.appendChild(nome);
+                
+                const email = document.createElement('div');
+                email.innerHTML = `<strong>E-mail:</strong> \u00A0 \u00A0${user.email}`;
+                li.appendChild(email);
+
+                const nascimento = document.createElement('div');
+                nascimento.innerHTML = `<strong>Data de nascimento:</strong> \u00A0 \u00A0${user.dataFormatada}`;
+                li.appendChild(nascimento);
+
+                const senha = document.createElement('div');
+                senha.innerHTML = `<strong>Senha:</strong> \u00A0 \u00A0${user.senha}`;
+                li.appendChild(senha);
+
+        
+                // Adiciona o item à lista
+                listaUsuarios.appendChild(li);
+                
+            });
+
+            
+        });
+
+        document.getElementById('limparStorage').addEventListener('click', function () {
+            localStorage.clear(); // Limpa todos os dados do localStorage
+            showTemporaryAlertDanger('Todos os cadastros foram excluídos!', 3000);
+            //alert('Dados do localStorage foram apagados!');
+            document.getElementById('userList').innerHTML = ''; // Limpa a lista exibida
+        });
+    }); 
+
+    </script> -->
 </body>
 </html>
