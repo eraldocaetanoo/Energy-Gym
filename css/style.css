@@ -449,11 +449,15 @@ img{
 
 #file{
     display: none;
+    
 }
 
 #uploadbtn{
     position: relative;
     cursor: pointer;
+    
 
 }
+
+
 
