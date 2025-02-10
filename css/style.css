@@ -442,4 +442,18 @@ footer {
     justify-content: space-between;
 }
 
+img{
+    height: 125px;
+    width: 125px;
+}
+
+#file{
+    display: none;
+}
+
+#uploadbtn{
+    position: relative;
+    cursor: pointer;
+
+}
 

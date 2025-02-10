@@ -178,3 +178,11 @@ function myFunction() {
     showTemporaryAlertSuccess('Senha salva na área de transferência: ' + copyText.value, 3000);
     //alert("Senha salva na área de transferência: " + copyText.value);
 }
+
+const imgDiv = document.querySelector("profile-pic");
+
+const uploadbtn= document.querySelector("#uploadbtn");
+
+imgDiv = addEventListener('mouseenter', function(){
+    uploadbtn.style.display="block"
+});
