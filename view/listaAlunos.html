@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Energy Gym - Listagem de Alunos</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../imagem/raio.png" type="image/png">
+    <!-- Incluindo o CSS do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Incluindo o JS do Bootstrap (necessário para modais) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Incluindo o jQuery -->
+   
 
 </head>
 <body>
@@ -73,7 +81,7 @@
                     <a href="../view/cadastro.html">
                     <button type="button" class="btn btn-success" id="cadastrar">Cadastrar novo aluno</button>
                     </a>
-                    <button class="btn btn-primary" id="recupbutton" type="button">Vizualizar todos os alunos cadastrados</button>
+                    <button class="btn btn-primary" id="recupbutton" type="button">Visualizar todos os alunos cadastrados</button>
                     
                     <button type="button" id="limparStorage" class="btn btn-danger">Excluir todos os cadastros</button>
                 </div>
@@ -81,6 +89,12 @@
                 
                 <div>
                         <ul class="list-group" id="userList"></ul>
+                        
+                        <!-- Modais -->
+                        <div id="modal-excluir-usuario"></div>
+                        <div id="modal-excluir-todos-usuarios"></div>
+  
+
                 </div>
                 <br>
             </div>
@@ -148,15 +162,27 @@
                         editarUsuario(index);
                     });
                     buttonGroup.appendChild(editButton);
-
-                    // Botão de Excluir
+                    
+                    // Botão de excluir usuário
                     const deleteButton = document.createElement('button');
                     deleteButton.className = 'btn btn-danger btn-sm'; // Classes Bootstrap
                     deleteButton.textContent = 'Excluir';
+
+                    // Alterar o evento de clique para abrir o modal
                     deleteButton.addEventListener('click', function () {
-                        excluirUsuario(index);
+                        // Exibe o modal
+                        $('#confirmDeleteModal').modal('show');
+                        
+                        // Quando o botão de confirmação de exclusão for clicado
+                        document.getElementById('confirmDeleteButton').onclick = function() {
+                            excluirUsuario(index); // Chama a função de exclusão
+                            $('#confirmDeleteModal').modal('hide'); // Fecha o modal após a exclusão
+                        };
                     });
+
                     buttonGroup.appendChild(deleteButton);
+
+                    
 
                     li.appendChild(buttonGroup);
 
@@ -164,6 +190,31 @@
                     listaUsuarios.appendChild(li);
                 });
             });
+
+
+            // Função que exclui todos de uma vez
+            document.getElementById('limparStorage').addEventListener('click', function () {
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                if (users.length != 0) {
+
+                    // Exibe o modal
+                    $('#confirmDeleteAllModal').modal('show');
+                    
+                    // Quando o botão de confirmação de exclusão for clicado
+                    document.getElementById('confirmADeleteButton').onclick = function() {
+        
+                            localStorage.clear(); // Limpa todos os dados do localStorage
+                            showTemporaryAlertDanger('Todos os cadastros foram excluídos!', 3000);
+                            //alert('Dados do localStorage foram apagados!');
+                            document.getElementById('userList').innerHTML = ''; // Limpa a lista exibida
+                            document.getElementById('recupbutton').click();
+                        $('#confirmDeleteAllModal').modal('hide'); // Fecha o modal após a exclusão
+                    };
+                }else{
+                    document.getElementById('recupbutton').click();
+                }
+            });
+
 
             // Função para editar um usuário
             function editarUsuario(index) {
@@ -264,7 +315,11 @@
                     document.body.removeChild(modal);
                 });
             }
+
+
+
             // Função para excluir um usuário
+
             function excluirUsuario(index) {
                 const users = JSON.parse(localStorage.getItem('users')) || [];
                 users.splice(index, 1); // Remove o usuário do array
@@ -273,75 +328,25 @@
                 // Atualiza a lista sem recarregar a página
                 document.getElementById('recupbutton').click();
             }
-
-            document.getElementById('limparStorage').addEventListener('click', function () {
-                localStorage.clear(); // Limpa todos os dados do localStorage
-                showTemporaryAlertDanger('Todos os cadastros foram excluídos!', 3000);
-                //alert('Dados do localStorage foram apagados!');
-                document.getElementById('userList').innerHTML = ''; // Limpa a lista exibida
-            });
-
-        });
-    </script>
-
-
-    <!-- <script>
-        //Script js para listar os cadastros
-        document.addEventListener('DOMContentLoaded', function () {
-        // Botão para exibir os dados
-        document.getElementById('recupbutton').addEventListener('click', function () {
-            // Obtém os dados do localStorage
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-
-            // Seleciona a lista no HTML
-            const listaUsuarios = document.getElementById('userList');
-            console.log('Evento de submit capturado!'); // Teste para verificar o evento.
-            // Limpa a lista antes de adicionar os itens
-            listaUsuarios.innerHTML = '';
-            if (users.length === 0) {
-                //alert('Nenhum dado encontrado no localStorage.');
-                showTemporaryAlertDanger('Nenhum aluno cadastrado!', 3000);
-                return;
-            }
-            users.reverse();
-            // Adiciona cada usuário como um item da lista
-            users.forEach(user => {
-                const li = document.createElement('li');
-                li.className = 'list-group-item list-group-item-action'; // Classe Bootstrap para estilizar
-
-                const nome = document.createElement('div');
-                nome.innerHTML = `<strong>Nome:</strong     > \u00A0 \u00A0${user.nome}`;
-                li.appendChild(nome);
-                
-                const email = document.createElement('div');
-                email.innerHTML = `<strong>E-mail:</strong> \u00A0 \u00A0${user.email}`;
-                li.appendChild(email);
-
-                const nascimento = document.createElement('div');
-                nascimento.innerHTML = `<strong>Data de nascimento:</strong> \u00A0 \u00A0${user.dataFormatada}`;
-                li.appendChild(nascimento);
-
-                const senha = document.createElement('div');
-                senha.innerHTML = `<strong>Senha:</strong> \u00A0 \u00A0${user.senha}`;
-                li.appendChild(senha);
-
-        
-                // Adiciona o item à lista
-                listaUsuarios.appendChild(li);
-                
-            });
-
             
         });
 
-        document.getElementById('limparStorage').addEventListener('click', function () {
-            localStorage.clear(); // Limpa todos os dados do localStorage
-            showTemporaryAlertDanger('Todos os cadastros foram excluídos!', 3000);
-            //alert('Dados do localStorage foram apagados!');
-            document.getElementById('userList').innerHTML = ''; // Limpa a lista exibida
-        });
-    }); 
+        // Carrega o conteúdo do arquivo modExcUsu.html
+        fetch('../others/modExcUsu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('modal-excluir-usuario').innerHTML = data;
+            })
+            .catch(error => console.error('Erro ao carregar o modal:', error));
+        
+        // Carrega o conteúdo do arquivo modExcTod.html
+        fetch('../others/modExcTod.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('modal-excluir-todos-usuarios').innerHTML = data;
+            })
+            .catch(error => console.error('Erro ao carregar o modal:', error));
+    </script>
 
-    </script> -->
 </body>
 </html>
