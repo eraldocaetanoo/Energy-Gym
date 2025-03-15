@@ -367,13 +367,10 @@ button:active {
 }
 
 
-.cadastro, .adm {
+.cadastro, .adm, .iniciousuario {
     margin-top: 80px;
 }
 
-.iniciousuario {
-    margin-top: 80px;
-}
 
 #btnTopo {
     position: fixed; /* Fixa o botão na tela */

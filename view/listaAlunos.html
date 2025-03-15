@@ -21,7 +21,7 @@
     
     <!-- Cabeçalho com o ícone de menu -->
     <header class="header">
-        <div class="menu-icon" onclick="toggleMenu()"> <!-- Ícone de três barras -->
+        <div class="menu-icon" onclick="toggleMenuAdm()"> <!-- Ícone de três barras -->
             &#9776; <!-- HTML code for three bars (hamburger icon) -->
         </div>
        <br>
@@ -38,19 +38,9 @@
     </header>
 
     <!-- Menu lateral -->
-    <nav class="sidebar" id="sidebar">
+    <nav class="sidebar" id="sidebarAdm">
         
-        <ul>
-            <li><img class="foto_perfil" src="../imagem/pngegg.png" alt="foto_perfil">
-                <p></p>
-                    <br>
-                    <a href="../view/meuperfil.html">Meu Perfil</a>
-                    <li><a href="../view/adm.html">Área do administrador</a></li>
-                    <li><a href="#avaliacoes">Avaliações Físicas</a></li>
-                    <li><a href="../view/frequencia.html">Frequência</a></li>
-                    <li><a href="#pagamento">Pagamento</a></li>
-                    <li><a href="../view/loginadm.html">Sair</a></li>
-        </ul>
+        
     </nav>
 
     <!-- Conteúdo principal da página -->
@@ -346,6 +336,16 @@
                 document.getElementById('modal-excluir-todos-usuarios').innerHTML = data;
             })
             .catch(error => console.error('Erro ao carregar o modal:', error));
+    
+        // Sidebar Adm
+        fetch('../others/modSidebarAdm.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebarAdm').innerHTML = data;
+            })
+            .catch(error => console.error('Erro ao carregar o modal:', error));
+
+    
     </script>
 
 </body>

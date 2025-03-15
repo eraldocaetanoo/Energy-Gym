@@ -34,35 +34,38 @@
     </header>
 
     <main>
+        
+        <div id="login">
+            <h1><strong>Login</strong></h1>
+            <br>
+            <form id="formLogin" action="#" onsubmit="return false;">
+                <label class="labelLogin" for="email">Email:</label> 
+                <div class="input">
+                    <input class="inputForm" id="email" placeholder="Digite seu email" autocomplete="use" type="email" required>
+                </div> 
+                <label class="labelLogin" for="senha">Senha:</label>
+                <div class="inputsenha">
+                    <input class="inputForm" id="senha" placeholder="Digite sua senha" autocomplete="current-password" type="password" required>
+                    <div id="icon" onclick="showHide()"></div>
+                
+                </div>
 
-    <div id="login">
-        <h1><strong>Login</strong></h1>
-        <br>
-        <form id="formLogin" action="#" onsubmit="return false;">
-            <label class="labelLogin" for="email">Email:</label> 
-            <div class="input">
-                <input class="inputForm" id="email" placeholder="Digite seu email" autocomplete="use" type="email" required>
-            </div> 
-            <label class="labelLogin" for="senha">Senha:</label>
-            <div class="inputsenha">
-                <input class="inputForm" id="senha" placeholder="Digite sua senha" autocomplete="current-password" type="password" required>
-                <div id="icon" onclick="showHide()"></div>
-               
-            </div>
-
-            <div id="btn">
-                <br>
-                <!-- onclick="verificarLoginCliente()" -->
-                <button type="button" id="entrarbutton" class="entrarbutton">Entrar</button>
-                <!-- <button type="submit">Entrar</button> -->
-            </div>
-        </form>
-        <button id="btnTopo" type="button" onclick="voltarAoTopo()">↑</button>
-    </div>
+                <div id="btn">
+                    <br>
+                    <!-- onclick="verificarLoginCliente()" -->
+                    <button type="button" id="entrarbutton" class="entrarbutton">Entrar</button>
+                    <!-- <button type="submit">Entrar</button> -->
+                </div>
+            </form>
+            <button id="btnTopo" type="button" onclick="voltarAoTopo()">↑</button>
+        </div>
     </main>
+
     <footer>
         <p>&copy; 2025 Energy Gym. Todos os direitos reservados.</p>
     </footer>
+
+
     <script src="../js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {

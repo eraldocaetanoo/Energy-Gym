@@ -9,20 +9,22 @@
     <link rel="stylesheet" href="../css/style.css">
     <!-- script -->
     <script src="../js/main.js"></script>
-    <title>Frequencia</title>
+    <title>Energy Gym - Frequência</title>
     <link rel="icon" href="../imagem/raio.png" type="image/png">
     
+
+
+
+
 </head>
 <body>
-    <script src="../js/main.js"></script>
+
     <!-- Cabeçalho com o ícone de menu -->
     <header class="header">
-        <!-- image-->
-        
-        <div class="menu-icon" onclick="toggleMenu()"> <!-- Ícone de três barras -->
+        <div class="menu-icon" onclick="toggleMenuUsu()"> <!-- Ícone de três barras -->
             &#9776; <!-- HTML code for three bars (hamburger icon) -->
         </div>
-        <br>
+       <br>
         <div class="logo">
             <a href="../view/iniciousuario.html"><img src="../imagem/logo.png" alt="logo">
             <h1>ENERGY GYM</h1>
@@ -30,27 +32,43 @@
         </div>
         <br>
         <div class="sobre">
-            <a href="#sobre">QUEM SOMOS</a>
+            <a href="../view/sobre.html">QUEM SOMOS</a>
         </div>
-         <!-- Menu lateral -->
-    <nav class="sidebar" id="sidebar">
         
-        <ul>
-            <li><img class="foto_perfil" src="../imagem/pngegg.png" alt="foto_perfil">
-                <p></p>
-                    <br>
-                    <a href="../view/meuperfil.html">Meu Perfil</a>
-                    <li><a href="../view/iniciousuario.html">Aulas</a></li>
-                    <li><a href="#avaliacoes">Avaliações Físicas</a></li>
-                    <li><a href="../view/frequencia.html">Frequência</a></li>
-                    <li><a href="#pagamento">Pagamento</a></li>
-                    <li><a href="../view/loginusuario.html">Sair</a></li>
-        </ul>
-    </nav>
+    </header>
+
+         <!-- Menu lateral -->
+    <nav class="sidebar" id="sidebarUsu"></nav>
+
+
+    <main>
+        <div class="iniciousuario">
+            <h1><strong>Frequência</strong></h1>
+        </div>
+
+
+        
+    </main>
     
-    <h3><strong>Frequência</strong></h3>
     <footer>
         <p>&copy; 2025 Energy Gym. Todos os direitos reservados.</p>
     </footer>
+
+
+
+    <script>
+        // Sidebar Usuário
+        fetch('../others/modSidebarUsu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebarUsu').innerHTML = data;
+            })
+            .catch(error => console.error('Erro ao carregar o modal:', error));
+
+    </script>
+
+
+
+
 </body>
 </html>

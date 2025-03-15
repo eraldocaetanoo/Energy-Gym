@@ -1,33 +1,65 @@
 
 // Função que chama o menu lateral (sidebar)
-function toggleMenu() {
-    const sidebar = document.getElementById('sidebar');
-    const isOpen = sidebar.classList.contains('open');
+function toggleMenuUsu() {
+    const sidebarUsu = document.getElementById('sidebarUsu');
+    const isOpenUsu = sidebarUsu.classList.contains('open');
 
-    if (isOpen) {
+    if (isOpenUsu) {
         // Fecha a sidebar
-        sidebar.classList.remove('open');
+        sidebarUsu.classList.remove('open');
         document.removeEventListener('click', closeOnClickOutside); // Remove o evento de clique
     } else {
         // Abre a sidebar
-        sidebar.classList.add('open');
+        sidebarUsu.classList.add('open');
         setTimeout(() => {
             // Adiciona o evento para fechar ao clicar fora
             document.addEventListener('click', closeOnClickOutside);
         }, 0); // Timeout para evitar conflito com o clique atual
     }
+
+}
+
+function toggleMenuAdm() {
+    const sidebarAdm = document.getElementById('sidebarAdm');
+    const isOpenAdm = sidebarAdm.classList.contains('open');
+
+    if (isOpenAdm) {
+        // Fecha a sidebar
+        sidebarAdm.classList.remove('open');
+        document.removeEventListener('click', closeOnClickOutside); // Remove o evento de clique
+    } else {
+        // Abre a sidebar
+        sidebarAdm.classList.add('open');
+        setTimeout(() => {
+            // Adiciona o evento para fechar ao clicar fora
+            document.addEventListener('click', closeOnClickOutside);
+        }, 0); // Timeout para evitar conflito com o clique atual
+    }
+
 }
 
 // Função do menu lateral (sidebar) (para ao clicar fora ele recolher)
 function closeOnClickOutside(event) {
-    const sidebar = document.getElementById('sidebar');
+    const sidebar = document.getElementById('sidebarUsu');
 
     // Verifica se o clique foi fora da sidebar
     if (!sidebar.contains(event.target) && event.target.id !== 'toggle-button') {
         sidebar.classList.remove('open'); // Fecha a sidebar
         document.removeEventListener('click', closeOnClickOutside); // Remove o evento
-    }
+    }    
 }
+
+function closeOnClickOutside(event) {
+    const sidebar = document.getElementById('sidebarAdm');
+
+    // Verifica se o clique foi fora da sidebar
+    if (!sidebar.contains(event.target) && event.target.id !== 'toggle-button') {
+        sidebar.classList.remove('open'); // Fecha a sidebar
+        document.removeEventListener('click', closeOnClickOutside); // Remove o evento
+    }    
+}
+
+
 
 // Função para exibir o alerta temporário
 function showTemporaryAlertDanger(message, duration) {
