@@ -68,6 +68,58 @@
 
     </script>
 
+<h2>Lista de Frequência da Academia</h2>
+    <input type="text" id="nomeAluno" placeholder="Nome do aluno">
+    <button onclick="adicionarAluno()">Adicionar</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Presente</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="listaAlunos">
+        </tbody>
+    </table>
+    <script>
+        function adicionarAluno() {
+            let nome = document.getElementById("nomeAluno").value;
+            if (nome.trim() === "") return;
+            
+            let tabela = document.getElementById("listaAlunos");
+            let linha = tabela.insertRow();
+            
+            let celulaNome = linha.insertCell(0);
+            let celulaPresente = linha.insertCell(1);
+            let celulaAcoes = linha.insertCell(2);
+            
+            celulaNome.innerHTML = `<span>${nome}</span>`;
+            celulaPresente.innerHTML = `<input type='checkbox'>`;
+            celulaAcoes.innerHTML = `
+                <button onclick="editarAluno(this)">Editar</button>
+                <button onclick="removerAluno(this)">Remover</button>
+            `;
+            
+            document.getElementById("nomeAluno").value = "";
+        }
+        
+        function removerAluno(botao) {
+            let linha = botao.parentNode.parentNode;
+            linha.remove();
+        }
+        
+        function editarAluno(botao) {
+            let linha = botao.parentNode.parentNode;
+            let nomeAtual = linha.cells[0].querySelector("span").innerText;
+            let novoNome = prompt("Editar nome:", nomeAtual);
+            if (novoNome !== null && novoNome.trim() !== "") {
+                linha.cells[0].querySelector("span").innerText = novoNome;
+            }
+        }
+    </script>
+        
+     
 
 
 
