@@ -33,21 +33,8 @@
             <a href="#sobre">QUEM SOMOS</a>
         </div>
     </header>
-    <!-- Menu lateral -->
-    <nav class="sidebar" id="sidebar">
-        
-        <ul>
-            <li><img class="foto_perfil" src="../imagem/pngegg.png" alt="foto_perfil">
-                <p></p>
-                    <br>
-                    <a href="../view/meuperfil.html">Meu Perfil</a>
-                    <li><a href="../view/iniciousuario.html">Aulas</a></li>
-                    <li><a href="#avaliacoes">Avaliações Físicas</a></li>
-                    <li><a href="../view/frequencia.html">Frequência</a></li>
-                    <li><a href="#pagamento">Pagamento</a></li>
-                    <li><a href="../view/loginusuario.html">Sair</a></li>
-        </ul>
-    </nav>
+         <!-- Menu lateral -->
+         <nav class="sidebar" id="sidebarUsu"></nav>
 
     <main>
         <br>
@@ -70,8 +57,22 @@
                 <br>
                 <button onclick="Text">Voltar</button>
             </a></div>
-            <footer>
-                <p>&copy; 2025 Energy Gym. Todos os direitos reservados.</p>
-            </footer>
+
     </main>
+    <footer>
+        <p>&copy; 2025 Energy Gym. Todos os direitos reservados.</p>
+    </footer>
+    
+
+
+    <script>
+        // Sidebar Usuário
+        fetch('../others/modSidebarUsu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebarUsu').innerHTML = data;
+            })
+            .catch(error => console.error('Erro ao carregar o modal:', error));
+
+    </script>
 </html>
