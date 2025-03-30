@@ -22,7 +22,7 @@
 
     <!-- Cabeçalho com o ícone de menu -->
     <header class="header">
-        <div class="menu-icon" onclick="toggleMenuUsu()"> <!-- Ícone de três barras -->
+        <div class="menu-icon" onclick="toggleMenuAdm()"> <!-- Ícone de três barras -->
             &#9776; <!-- HTML code for three bars (hamburger icon) -->
         </div>
        <br>
@@ -39,7 +39,7 @@
     </header>
 
          <!-- Menu lateral -->
-    <nav class="sidebar" id="sidebarUsu"></nav>
+    <nav class="sidebar" id="sidebarAdm"></nav>
 
 
     <main>
@@ -47,28 +47,7 @@
             <h1><strong>Frequência</strong></h1>
         </div>
 
-
-        
-    </main>
-    
-    <footer>
-        <p>&copy; 2025 Energy Gym. Todos os direitos reservados.</p>
-    </footer>
-
-
-
-    <script>
-        // Sidebar Usuário
-        fetch('../others/modSidebarUsu.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('sidebarUsu').innerHTML = data;
-            })
-            .catch(error => console.error('Erro ao carregar o modal:', error));
-
-    </script>
-
-<h2>Lista de Frequência da Academia</h2>
+        <h2>Lista de Frequência da Academia</h2>
     <input type="text" id="nomeAluno" placeholder="Nome do aluno">
     <button onclick="adicionarAluno()">Adicionar</button>
     <table>
@@ -82,6 +61,15 @@
         <tbody id="listaAlunos">
         </tbody>
     </table>
+        
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Energy Gym. Todos os direitos reservados.</p>
+    </footer>
+    <script src="../js/main.js"></script>
+
+
     <script>
         function adicionarAluno() {
             let nome = document.getElementById("nomeAluno").value;
@@ -117,6 +105,16 @@
                 linha.cells[0].querySelector("span").innerText = novoNome;
             }
         }
+        
+        // Sidebar Usuário
+        fetch('../others/modSidebarAdm.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebarAdm').innerHTML = data;
+            })
+            .catch(error => console.error('Erro ao carregar o modal:', error));
+
+    
     </script>
         
      

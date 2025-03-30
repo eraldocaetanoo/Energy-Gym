@@ -7,13 +7,13 @@ function toggleMenuUsu() {
     if (isOpenUsu) {
         // Fecha a sidebar
         sidebarUsu.classList.remove('open');
-        document.removeEventListener('click', closeOnClickOutside); // Remove o evento de clique
+        document.removeEventListener('click', closeOnClickOutsideUsu); // Remove o evento de clique
     } else {
         // Abre a sidebar
         sidebarUsu.classList.add('open');
         setTimeout(() => {
             // Adiciona o evento para fechar ao clicar fora
-            document.addEventListener('click', closeOnClickOutside);
+            document.addEventListener('click', closeOnClickOutsideUsu);
         }, 0); // Timeout para evitar conflito com o clique atual
     }
 
@@ -26,36 +26,36 @@ function toggleMenuAdm() {
     if (isOpenAdm) {
         // Fecha a sidebar
         sidebarAdm.classList.remove('open');
-        document.removeEventListener('click', closeOnClickOutside); // Remove o evento de clique
+        document.removeEventListener('click', closeOnClickOutsideAdm); // Remove o evento de clique
     } else {
         // Abre a sidebar
         sidebarAdm.classList.add('open');
         setTimeout(() => {
             // Adiciona o evento para fechar ao clicar fora
-            document.addEventListener('click', closeOnClickOutside);
+            document.addEventListener('click', closeOnClickOutsideAdm);
         }, 0); // Timeout para evitar conflito com o clique atual
     }
 
 }
 
 // Função do menu lateral (sidebar) (para ao clicar fora ele recolher)
-function closeOnClickOutside(event) {
+function closeOnClickOutsideUsu(event) {
     const sidebar = document.getElementById('sidebarUsu');
 
     // Verifica se o clique foi fora da sidebar
     if (!sidebar.contains(event.target) && event.target.id !== 'toggle-button') {
         sidebar.classList.remove('open'); // Fecha a sidebar
-        document.removeEventListener('click', closeOnClickOutside); // Remove o evento
+        document.removeEventListener('click', closeOnClickOutsideUsu); // Remove o evento
     }    
 }
 
-function closeOnClickOutside(event) {
+function closeOnClickOutsideAdm(event) {
     const sidebar = document.getElementById('sidebarAdm');
 
     // Verifica se o clique foi fora da sidebar
     if (!sidebar.contains(event.target) && event.target.id !== 'toggle-button') {
         sidebar.classList.remove('open'); // Fecha a sidebar
-        document.removeEventListener('click', closeOnClickOutside); // Remove o evento
+        document.removeEventListener('click', closeOnClickOutsideAdm); // Remove o evento
     }    
 }
 

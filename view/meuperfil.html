@@ -65,17 +65,13 @@
         .button:hover {
             background-color: #0056b3;
         }
-        footer {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #f1f1f1;
-        }
+        
     </style>
 </head>
 <body>
 
     <header class="header">
-        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <div class="menu-icon" onclick="toggleMenuUsu()">&#9776;</div>
         <br>
         <div class="logo">
             <a href="../view/iniciousuario.html">
@@ -89,28 +85,26 @@
         </div>
     </header>
 
-    <!-- Menu lateral -->
-    <nav class="sidebar" id="sidebar">
-        <ul>
-            <li>
-                <img class="foto_perfil" src="../imagem/pngegg.png" alt="foto_perfil">
-                <br>
-                <a href="../view/meuperfil.html">Meu Perfil</a>
-            </li>
-            <li><a href="../view/iniciosuario.html">Aulas</a></li>
-            <li><a href="#avaliacoes">Avaliações Físicas</a></li>
-            <li><a href="../view/frequencia.html">Frequência</a></li>
-            <li><a href="#pagamento">Pagamento</a></li>
-            <li><a href="../view/loginusuario.html">Sair</a></li>
-        </ul>
-    </nav>
+    
          <!-- Menu lateral -->
          <nav class="sidebar" id="sidebarUsu"></nav>
 
     <main>
+        <br>
+        <br>
+        <div class="profile-pic">
+            <img src="../imagem/pngegg.png" id="photo" alt="">
+            <input type="file" id="file">
+            <label for="file" id="uploadbtn">
+                <i class="fa-solid fa-camera"></i>
+            </label>
+            
+        </div>
+        
         <h2>Escolha uma Foto de Perfil</h2>
         <input type="file" id="fotoInput" accept="image/*">
-        <img id="preview" src="../imagem/pngegg.png" alt="Prévia da Foto">
+        <img id="preview" src="../imagem/pngegg.png" alt="Prévia da Foto" style="display: none; width: 150px; height: 150px;">
+
         
         <h2>Tabela de Informações Pessoais</h2>
         <table id="infoTable">
@@ -193,26 +187,10 @@
     </footer>
 
 </body>
-        <br>
-        <br>
-        <div class="profile-pic">
-            <img src="../imagem/pngegg.png" id="photo" alt="">
-            <input type="file" id="file">
-            <label for="file" id="uploadbtn">
-                <i class="fa-solid fa-camera"></i>
-            </label>
+        
             
-        </div>
-        <br>
-            <a>
-            <button onclick="Text">Congelar matricula</button>
-                <br>
-                <br>
-                <button onclick="Text">Cancelar plano</button>
-                <br>
-                <br>
-                <button onclick="Text">Voltar</button>
-            </a></div>
+
+                
 
     </main>
     <footer>
